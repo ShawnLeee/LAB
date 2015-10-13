@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8D9F0B13-D33D-4D8A-A8E2-EE652262018D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>实验助手</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>11F57DF68B9D6EEB0E3A75481BD0C5A15736A998</key>
+		<string>github.com:ShawnLeee/LabAssistant.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>实验助手.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>11F57DF68B9D6EEB0E3A75481BD0C5A15736A998</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:ShawnLeee/LabAssistant.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>11F57DF68B9D6EEB0E3A75481BD0C5A15736A998</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>11F57DF68B9D6EEB0E3A75481BD0C5A15736A998</string>
+			<key>IDESourceControlWCCName</key>
+			<string>%E5%AE%9E%E9%AA%8C%E5%8A%A9%E6%89%8B</string>
+		</dict>
+	</array>
+</dict>
+</plist>

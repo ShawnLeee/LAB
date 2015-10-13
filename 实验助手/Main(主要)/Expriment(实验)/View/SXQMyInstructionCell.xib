@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SXQMyInstructionCell" id="KGk-i7-Jjw" customClass="SXQMyInstructionCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRISPR技术" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-JO-yTH">
+                        <rect key="frame" x="20" y="0.0" width="88" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3天前上传" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QN-EH-uhv">
+                        <rect key="frame" x="20" y="22" width="70" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3天前编辑" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMv-n8-c9K">
+                        <rect key="frame" x="120" y="23" width="65" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KCb-JO-yTH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ASF-Kj-RWL"/>
+                    <constraint firstItem="KCb-JO-yTH" firstAttribute="leading" secondItem="5QN-EH-uhv" secondAttribute="leading" id="Eug-KI-oQr"/>
+                    <constraint firstItem="aMv-n8-c9K" firstAttribute="leading" secondItem="5QN-EH-uhv" secondAttribute="trailing" constant="30" id="Tnp-ns-bBt"/>
+                    <constraint firstItem="KCb-JO-yTH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fNx-YD-brW"/>
+                    <constraint firstItem="5QN-EH-uhv" firstAttribute="centerY" secondItem="aMv-n8-c9K" secondAttribute="centerY" id="gbN-2l-Doq"/>
+                    <constraint firstItem="5QN-EH-uhv" firstAttribute="top" secondItem="KCb-JO-yTH" secondAttribute="bottom" constant="2" id="pxp-fw-eGu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="editTimeLabel" destination="aMv-n8-c9K" id="dMh-2a-cSp"/>
+                <outlet property="instructionNameLabel" destination="KCb-JO-yTH" id="A7q-jI-hu8"/>
+                <outlet property="uploadTImeLabel" destination="5QN-EH-uhv" id="Zce-4x-OI8"/>
+            </connections>
+            <point key="canvasLocation" x="312" y="104"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SXQVenderLogin">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="Uqw-JQ-b1d"/>
+                <outlet property="view1" destination="p3L-gW-xeL" id="gfM-sW-oTX"/>
+                <outlet property="view1Const" destination="zJg-TI-xKK" id="Mew-sf-i1Z"/>
+                <outlet property="view2" destination="xRe-Vi-Y5R" id="OQD-Hb-g19"/>
+                <outlet property="view2Const" destination="KI5-lj-2lj" id="1wN-gH-BDM"/>
+                <outlet property="view3" destination="AT4-dz-RjX" id="NM0-A6-eHI"/>
+                <outlet property="view3Const" destination="54o-pF-3Y0" id="NyT-Qg-Nef"/>
+                <outlet property="widthConstraint" destination="uAr-NN-ww1" id="fga-sB-Hvm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="288" height="143"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-Vi-Y5R" customClass="SXQVenderView">
+                    <rect key="frame" x="130" y="79" width="44" height="64"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AT4-dz-RjX" customClass="SXQVenderView">
+                    <rect key="frame" x="212" y="79" width="44" height="64"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="800" verticalHuggingPriority="800" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="p3L-gW-xeL" customClass="SXQVenderView">
+                    <rect key="frame" x="30" y="79" width="44" height="64"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="tNJ-Kr-1oc"/>
+                        <constraint firstAttribute="width" constant="44" id="uAr-NN-ww1"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第三方登录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIy-Kr-lEz">
+                    <rect key="frame" x="107" y="0.0" width="75" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h74-kj-d9a" userLabel="border2">
+                    <rect key="frame" x="192" y="9" width="96" height="0.0"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="dCy-94-DxC"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nag-DJ-Mxr" userLabel="border1">
+                    <rect key="frame" x="0.0" y="9" width="96" height="0.0"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="width" secondItem="AT4-dz-RjX" secondAttribute="width" id="1OL-Np-JcS"/>
+                <constraint firstAttribute="trailing" secondItem="h74-kj-d9a" secondAttribute="trailing" id="1eX-XO-mPv"/>
+                <constraint firstItem="xIy-Kr-lEz" firstAttribute="centerY" secondItem="h74-kj-d9a" secondAttribute="centerY" id="4Kv-nZ-bFW"/>
+                <constraint firstItem="AT4-dz-RjX" firstAttribute="leading" secondItem="xRe-Vi-Y5R" secondAttribute="trailing" constant="38" id="54o-pF-3Y0"/>
+                <constraint firstItem="h74-kj-d9a" firstAttribute="leading" secondItem="xIy-Kr-lEz" secondAttribute="trailing" constant="10" id="7pH-AT-45O"/>
+                <constraint firstItem="xIy-Kr-lEz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="80o-pt-UUC"/>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="width" secondItem="p3L-gW-xeL" secondAttribute="width" id="Ala-kn-dS4"/>
+                <constraint firstAttribute="centerX" secondItem="xIy-Kr-lEz" secondAttribute="centerX" id="JTM-oA-uEw"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JVD-1I-xIL"/>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="leading" secondItem="p3L-gW-xeL" secondAttribute="trailing" constant="56" id="KI5-lj-2lj"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="height" secondItem="h74-kj-d9a" secondAttribute="height" id="KY0-Bc-rUG"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="centerY" secondItem="xIy-Kr-lEz" secondAttribute="centerY" id="L5E-4o-qoy"/>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="bottom" secondItem="p3L-gW-xeL" secondAttribute="bottom" id="VrJ-eI-fqI"/>
+                <constraint firstAttribute="bottom" secondItem="p3L-gW-xeL" secondAttribute="bottom" id="cLj-hA-7Og"/>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="height" secondItem="AT4-dz-RjX" secondAttribute="height" id="eir-we-YlM"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="width" secondItem="h74-kj-d9a" secondAttribute="width" id="fJ5-qY-gvf"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="width" secondItem="h74-kj-d9a" secondAttribute="width" id="mkT-ho-U0C"/>
+                <constraint firstItem="xRe-Vi-Y5R" firstAttribute="height" secondItem="p3L-gW-xeL" secondAttribute="height" id="pdg-x2-I5t"/>
+                <constraint firstItem="nag-DJ-Mxr" firstAttribute="height" secondItem="h74-kj-d9a" secondAttribute="height" id="qK6-7d-GEc"/>
+                <constraint firstItem="p3L-gW-xeL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="zJg-TI-xKK"/>
+                <constraint firstItem="AT4-dz-RjX" firstAttribute="bottom" secondItem="xRe-Vi-Y5R" secondAttribute="bottom" id="zTE-WF-9md"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fJ5-qY-gvf"/>
+                    <exclude reference="qK6-7d-GEc"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-174" y="-148.5"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SXQLoginField">
+            <connections>
+                <outlet property="passWordField" destination="tPS-jm-jdw" id="naj-YI-Ela"/>
+                <outlet property="userField" destination="fuw-kL-WPU" id="yZX-Yd-9HB"/>
+                <outlet property="view" destination="iN0-l3-epB" id="6VW-af-trF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机/邮箱/用户名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fuw-kL-WPU">
+                    <rect key="frame" x="10" y="10" width="580" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tPS-jm-jdw">
+                    <rect key="frame" x="10" y="50" width="580" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n63-rr-Wo8">
+                    <rect key="frame" x="10" y="39" width="590" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="s8I-hm-7YJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fuw-kL-WPU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="4Hy-Uf-Lw9"/>
+                <constraint firstItem="tPS-jm-jdw" firstAttribute="leading" secondItem="fuw-kL-WPU" secondAttribute="leading" id="Abb-Nb-vj5"/>
+                <constraint firstItem="tPS-jm-jdw" firstAttribute="top" secondItem="n63-rr-Wo8" secondAttribute="bottom" constant="10" id="Bbi-Oh-XXK"/>
+                <constraint firstItem="tPS-jm-jdw" firstAttribute="leading" secondItem="n63-rr-Wo8" secondAttribute="leading" id="EZ7-Ov-BZR"/>
+                <constraint firstAttribute="trailing" secondItem="fuw-kL-WPU" secondAttribute="trailing" constant="10" id="Jj0-eY-Cgb"/>
+                <constraint firstItem="n63-rr-Wo8" firstAttribute="leading" secondItem="tPS-jm-jdw" secondAttribute="trailing" constant="-530" id="Yph-WI-10f"/>
+                <constraint firstItem="tPS-jm-jdw" firstAttribute="width" secondItem="fuw-kL-WPU" secondAttribute="width" id="ct5-JI-Xxs"/>
+                <constraint firstItem="n63-rr-Wo8" firstAttribute="top" secondItem="fuw-kL-WPU" secondAttribute="bottom" constant="10" id="ddu-IM-abF"/>
+                <constraint firstItem="fuw-kL-WPU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="olr-c7-VJv"/>
+                <constraint firstAttribute="trailing" secondItem="n63-rr-Wo8" secondAttribute="trailing" id="xa3-NY-gcg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Yph-WI-10f"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="570" y="164"/>
+        </view>
+    </objects>
+</document>
