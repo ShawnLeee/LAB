@@ -70,9 +70,9 @@
         return @(text.length > 0);
     }];
     [[_confirmBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        _experimentStep.processMemo = _remarkView.text;
+        self.experimentStep.processMemo = _remarkView.text;
+//        _experimentStep.processMemo = _remarkView.text;
         [_experimentStep saveProcessMemo:_remarkView.text];
-        NSString *remark = [NSString stringWithFormat:@"备注:%@",_remarkView.text];
         _addRemarkBlk(_remarkView.text);
         [self.navigationController dismissViewControllerAnimated:YES completion:self.completion];
     }];

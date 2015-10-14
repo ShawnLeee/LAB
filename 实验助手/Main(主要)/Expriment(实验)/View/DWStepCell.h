@@ -5,14 +5,8 @@
 //  Created by sxq on 15/9/25.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-@class SXQExperimentStep,SXQExpStep;
 #import <UIKit/UIKit.h>
-
+@class SXQExpStepFrame;
 @interface DWStepCell : UITableViewCell
-@property (nonatomic,strong) SXQExpStep *expProcess;
-/**
- *  添加评论
- */
-- (void)addRemark:(NSString *)remark;
-- (void)addImage:(UIImage *)image;
+@property (nonatomic,strong) SXQExpStepFrame *stepFrame;
 @end

@@ -37,10 +37,14 @@
         if (currentExprimentData) {
             _myExperiment = currentExprimentData.myExperiment;
             _expProcesses = currentExprimentData.expProcesses;
-            _completion(YES);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _completion(YES);
+            });
         }else
         {
-            _completion(NO);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _completion(NO);
+            });
         }
     }];
 }

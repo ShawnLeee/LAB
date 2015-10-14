@@ -5,6 +5,7 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import "SXQExpStepFrame.h"
 #import "SXQSaveReagentController.h"
 #import "SXQMyExperimentManager.h"
 #import "SXQNavgationController.h"
@@ -44,8 +45,13 @@
 {
     if (self = [super init]) {
         _myExpId = [myExpId copy];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:@"needreloadCell" object:nil];
     }
     return self;
+}
+- (void)test:(NSNotification *)notifation
+{
+    DWStepCell *cell = (DWStepCell *)notifation.object;
 }
 - (SXQExpStep *)currentStep
 {
@@ -70,18 +76,21 @@
 }
 - (void)p_setupTableView
 {
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 100;
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"DWStepCell" bundle:nil] forCellReuseIdentifier:@"DWStepCell"];
-   
-    _stepsDataSource = [[ArrayDataSource alloc] initWithItems:@[] cellIdentifier:@"DWStepCell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStep *stepModel) {
-        cell.expProcess = stepModel;
+    [self.tableView registerClass:[DWStepCell class] forCellReuseIdentifier:@"cell"];
+    _stepsDataSource = [[ArrayDataSource alloc] initWithItems:@[] cellIdentifier:@"cell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStepFrame *stepFrame) {
+        cell.stepFrame = stepFrame;
     }];
     self.tableView.dataSource = _stepsDataSource;
     
      _currentExperimentData = [[SXQCurrentExperimentData alloc] initWithMyExpId:_myExpId completion:^(BOOL success) {
-         _stepsDataSource.items = _currentExperimentData.expProcesses;
+         NSMutableArray *tmp = [NSMutableArray array];
+         [_currentExperimentData.expProcesses enumerateObjectsUsingBlock:^(SXQExpStep *step, NSUInteger idx, BOOL * _Nonnull stop) {
+             SXQExpStepFrame *stepFrame = [[SXQExpStepFrame alloc] init];
+             stepFrame.expStep = step;
+             [tmp addObject:stepFrame];
+         }];
+         _stepsDataSource.items = [tmp copy];
         [self.tableView reloadData];
     }];
     [self p_setupTableFooter];
@@ -305,9 +314,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     DWStepCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    [self.tableView beginUpdates];
-    [cell addImage:image];
-    [self.tableView endUpdates];
+  
     
     //写入一条实验步骤到数据库
     [step addImage:image];
@@ -327,7 +334,6 @@
     }
     void (^addRemarkBlk)(NSString *remark) = ^(NSString *remark){
         [self.tableView beginUpdates];
-        [cell addRemark:remark];
         [self.tableView endUpdates];
     };
     SXQRemarkController *remarkVC = [[SXQRemarkController alloc] initWithExperimentStep:step];
@@ -337,5 +343,9 @@
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SXQExpStepFrame *stepFrame = _stepsDataSource.items[indexPath.row];
+    return stepFrame.cellHeight;
+}
 @end

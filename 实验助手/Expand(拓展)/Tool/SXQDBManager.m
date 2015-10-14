@@ -501,6 +501,7 @@ static SXQDBManager *_dbManager = nil;
         [tmpArr addObject:expProcess];
     }
     return [tmpArr copy];
+    
 }
 - (SXQMyExperiment *)fetchMyExpWithMyExpId:(NSString *)myExpId db:(FMDatabase *)db
 {

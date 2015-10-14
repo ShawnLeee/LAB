@@ -32,4 +32,8 @@ static const NSUInteger kImageCount = 9;
     if (self.images.count < kImageCount)
         [self.images addObject:image];
 }
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@ %p>,%@",[self class] ,self,@{@"processMemo" : _processMemo}];
+}
 @end
