@@ -75,43 +75,7 @@ static NSUInteger numberOfColumns = 3;
     browser.photos = mymyImages; // 设置所有的图片
     [browser show];
 }
-//- (void)addPhoto:(UIImage *)image 
-//{
-//    NSUInteger index = _myImages.count;
-//    NSAssert(index < CountOfImageView,@"");
-//    
-//    UIImageView *imageView = _imageViews[index];
-//    imageView.image = image;
-//    [_myImages addObject:image];
-//    [self layoutCustomSubviews];
-//}
-- (void)addPhoto:(UIImage *)image updatesConstraintBlk:(void (^)(BOOL, CGFloat))completion
-{
-    NSUInteger index = _myImages.count;
-    if (index >= _imageViews.count) {
-        CGFloat photoHeight = [self heightOfPhotoContainer];
-        completion(NO,photoHeight);
-        return;
-    }
-    
-    UIImageView *imageView = _imageViews[index];
-    imageView.image = image;
-    [self.myImages addObject:image];
-    [self layoutCustomSubviews];
-    CGFloat photoHeight = [self heightOfPhotoContainer];
-    completion(YES,photoHeight);
-}
-- (void)addmyImages:(NSArray *)myImages updatesConstraintBlk:(void (^)(BOOL, CGFloat))completion
-{
-    if (myImages.count > _imageViews.count) return;
-    [myImages enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImageView *imageView = _imageViews[idx];
-        imageView.image = image;
-        [self.myImages addObject:image];
-    }];
-    [self layoutCustomSubviews];
-    completion(YES,[self heightOfPhotoContainer]);
-}
+
 - (void)layoutCustomSubviews
 {
     [super layoutSubviews];
@@ -125,16 +89,6 @@ static NSUInteger numberOfColumns = 3;
         UIImageView *imageView = _imageViews[i];
         imageView.frame = CGRectMake(imageX, imageY, _imageWidth, _imageWidth);
     }
-}
-- (void)setmyImages:(NSMutableArray *)myImages
-{
-    _myImages = myImages;
-    if (myImages.count > _imageViews.count) return;
-    [myImages enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImageView *imageView = _imageViews[idx];
-        imageView.image = image;
-        [_myImages addObject:image];
-    }];   
 }
 - (CGFloat)heightOfPhotoContainer
 {

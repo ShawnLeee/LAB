@@ -29,7 +29,7 @@
  */
 @property (nonatomic,copy) NSString *depositReagent;
 
-@property (nonatomic,strong,readonly) NSMutableArray *images;
+@property (nonatomic,strong) NSMutableArray *images;
 @property (nonatomic,assign) CGFloat imageHeight;
 - (void)saveProcessMemo:(NSString *)processMemo;
 - (void)addImage:(UIImage *)image;

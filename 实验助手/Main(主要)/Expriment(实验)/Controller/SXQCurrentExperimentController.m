@@ -51,7 +51,8 @@
 }
 - (void)test:(NSNotification *)notifation
 {
-    DWStepCell *cell = (DWStepCell *)notifation.object;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
 }
 - (SXQExpStep *)currentStep
 {
@@ -311,12 +312,10 @@
 - (void)addExpImage:(UIImage *)image
 {
     SXQExpStep *step = self.currentStep;
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    DWStepCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-  
-    
-    //写入一条实验步骤到数据库
+    if (step.images.count > 9) {
+        [MBProgressHUD showError:@"最多可添加9张"];
+        return;
+    }
     [step addImage:image];
 }
 #pragma mark 添加评论
@@ -324,7 +323,6 @@
 {
     SXQExpStep *step = nil;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    DWStepCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (indexPath) {
         step = _currentExperimentData.expProcesses[indexPath.row];
     }else

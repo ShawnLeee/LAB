@@ -9,9 +9,15 @@
 #import "SXQExpStep.h"
 static const NSUInteger kImageCount = 9;
 @interface SXQExpStep ()
-@property (nonatomic,strong,readwrite) NSMutableArray *images;
 @end
 @implementation SXQExpStep
+- (NSMutableArray *)images
+{
+    if (_images == nil) {
+        _images = [NSMutableArray array];
+    }
+    return _images;
+}
 - (NSString *)processMemo
 {
     if ([_processMemo isEqualToString:@"(null)"]) {
@@ -29,11 +35,27 @@ static const NSUInteger kImageCount = 9;
 }
 - (void)addImage:(UIImage *)image
 {
-    if (self.images.count < kImageCount)
-        [self.images addObject:image];
+    [self insertObject:image inImagesAtIndex:self.images.count];
+    //添加到数据库
 }
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@ %p>,%@",[self class] ,self,@{@"processMemo" : _processMemo}];
 }
+- (void)insertObject:(UIImage *)object inImagesAtIndex:(NSUInteger)index
+{
+    [self.images insertObject:object atIndex:index];
+}
+- (void)removeObjectFromImagesAtIndex:(NSUInteger)index
+{
+    [self.images removeObjectAtIndex:index];
+}
 @end
+
+
+
+
+
+
+
+

@@ -9,9 +9,11 @@
 #import "DWStepCell.h"
 #import "PhotoContainer.h"
 #import "SXQExpStep.h"
+#import "PhotoContainer.h"
 #import "SXQExpStepFrame.h"
 static const CGFloat xPaddind = 8;
 static const CGFloat yPadding =8;
+
 @interface DWStepCell ()
 @property (nonatomic,weak) UILabel *stepNumLabel;
 @property (nonatomic,weak) UILabel *stepDescLabel;
@@ -31,6 +33,7 @@ static const CGFloat yPadding =8;
 - (void)setupSelf
 {
     UILabel *stepNumLabel = [[UILabel alloc] init];
+    stepNumLabel.backgroundColor = [UIColor redColor];
     stepNumLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:stepNumLabel];
     _stepNumLabel = stepNumLabel;
@@ -66,6 +69,8 @@ static const CGFloat yPadding =8;
     _stepDescLabel.text = expProcess.expStepDesc;
     _stepRemarkContentLabel.text = expProcess.processMemo;
     [self.stepFrame.expStep addObserver:self forKeyPath:@"processMemo" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    [self.stepFrame.expStep addObserver:self forKeyPath:@"images" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld  context:nil];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -75,6 +80,7 @@ static const CGFloat yPadding =8;
 - (void)dealloc
 {
     [self.stepFrame.expStep removeObserver:self forKeyPath:@"processMemo"];
+    [self.stepFrame.expStep removeObserver:self forKeyPath:@"images"];
 }
 - (void)layoutSubviews
 {
@@ -87,12 +93,11 @@ static const CGFloat yPadding =8;
 }
 - (void)setFrame:(CGRect)frame
 {
-    CGRect rect = frame;
-    rect.origin.x = xPaddind;
-    rect.origin.y += yPadding;
-    rect.size.width -= 2 * xPaddind;
-    rect.size.height -= yPadding;
-    frame = rect;
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    frame.origin.y += yPadding;
+    frame.origin.x = xPaddind;
+    frame.size.width = screenSize.width - 2 * xPaddind;
+    frame.size.height -= yPadding;
     [super setFrame:frame];
 }
 -(void)setSelected:(BOOL)selected

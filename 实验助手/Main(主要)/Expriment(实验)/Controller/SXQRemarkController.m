@@ -71,7 +71,6 @@
     }];
     [[_confirmBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.experimentStep.processMemo = _remarkView.text;
-//        _experimentStep.processMemo = _remarkView.text;
         [_experimentStep saveProcessMemo:_remarkView.text];
         _addRemarkBlk(_remarkView.text);
         [self.navigationController dismissViewControllerAnimated:YES completion:self.completion];

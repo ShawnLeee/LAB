@@ -15,10 +15,14 @@ static const CGFloat kStepNumWidth = 60;
 @implementation SXQExpStepFrame
 - (void)setExpStep:(SXQExpStep *)expStep
 {
-    CGFloat cellWidth = [UIScreen mainScreen].bounds.size.width - 2 * kCellPadding;
+    if (_expStep == nil) {
+        [expStep addObserver:self forKeyPath:@"processMemo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+        [expStep addObserver:self forKeyPath:@"images" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld  context:nil];
+    }
+    CGFloat cellWidth = [UIScreen mainScreen].bounds.size.width;
     _expStep = expStep;
     //stepNum
-    CGFloat stepNumXY = kCellPadding;
+    CGFloat stepNumXY = 0;
     CGFloat stepNumW = kStepNumWidth;
     CGFloat stepNumH = 30;
     _stepNumFrame = CGRectMake(stepNumXY, stepNumXY, stepNumW, stepNumH);
@@ -26,7 +30,7 @@ static const CGFloat kStepNumWidth = 60;
     //stepDesc
     CGFloat stepDescX = CGRectGetMaxX(_stepNumFrame) + kViewPadding;
     CGFloat stepDescY = stepNumXY;
-    CGFloat stepDescW = cellWidth - kCellPadding - stepNumW - kViewPadding ;
+    CGFloat stepDescW = cellWidth - kCellPadding - stepNumW - kViewPadding;
     CGSize descSize = [expStep.expStepDesc sizeWithFixedWidth:stepDescW font:15];
     _stepDescFrame = (CGRect){{stepDescX,stepDescY},descSize};
     if (expStep.processMemo) {
@@ -43,7 +47,7 @@ static const CGFloat kStepNumWidth = 60;
         
     }
     CGFloat padding = 8;
-    if (expStep.images) {
+    if (expStep.images.count) {
         CGFloat photoX = stepNumXY;
         CGFloat photoY = 0;
         CGFloat photoW = cellWidth - 2 * kViewPadding;
@@ -59,12 +63,21 @@ static const CGFloat kStepNumWidth = 60;
     }else
     {
         if (expStep.processMemo) {
-            _cellHeight = MAX(CGRectGetMaxY(_remarkFrame),CGRectGetMaxY(_remarkContentFrame)) + padding * 1.5;
+            _cellHeight = MAX(CGRectGetMaxY(_remarkFrame),CGRectGetMaxY(_remarkContentFrame)) + padding *2;
         }else
         {
             _cellHeight = MAX(CGRectGetMaxY(_stepNumFrame),CGRectGetMaxY(_stepDescFrame)) + padding;
         }
     }
     
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    self.expStep = (SXQExpStep *)object;
+}
+- (void)dealloc
+{
+    [self.expStep removeObserver:self forKeyPath:@"processMemo"];
+    [self.expStep removeObserver:self forKeyPath:@"images"];
 }
 @end
