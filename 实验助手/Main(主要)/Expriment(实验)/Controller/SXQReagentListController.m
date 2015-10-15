@@ -5,6 +5,9 @@
 //  Created by sxq on 15/9/30.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
+#import "SXQExpEquipment.h"
+#import "SXQExpConsumable.h"
+#import "DWGroup.h"
 #import "SXQAddExpController.h"
 #import "UIBarButtonItem+SXQ.h"
 #import "FPPopoverController.h"
@@ -18,14 +21,16 @@
 #import "SXQHotInstruction.h"
 #import "SXQMyGenericInstruction.h"
 #import "SXQInstructionData.h"
+#import "SXQSupplierCell.h"
 #define ReagentCellIdentifier @"Reagent Cell"
-
+#define SupplierCellIdentifier @"Supplier Cell"
 @interface SXQReagentListController ()<SXQReagentCellDelegate>
 @property (nonatomic,strong) id instruction;
 @property (nonatomic,strong) ArrayDataSource *reagentDataSource;
 @property (nonatomic,strong) SXQReagentListData *reagentData;
 @property (nonatomic,weak) FPPopoverController *popOver;
 @property (nonatomic,strong) SXQInstructionData *instructionData;
+@property (nonatomic,strong) ArrayDataSource *supplierDataSource;
 @end
 
 @implementation SXQReagentListController
@@ -44,12 +49,23 @@
 - (void)p_setupTableView
 {
     [self.tableView registerNib:[UINib nibWithNibName:@"SXQReagentCell" bundle:nil] forCellReuseIdentifier:ReagentCellIdentifier];
-    
-    _reagentDataSource= [[ArrayDataSource alloc] initWithItems:_instructionData.expReagent cellIdentifier:ReagentCellIdentifier cellConfigureBlock:^(SXQReagentCell *cell, SXQExpReagent *reagent) {
-        cell.delegate = self;
-        [cell configureCellWithItem:reagent];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SXQSupplierCell" bundle:nil] forCellReuseIdentifier:SupplierCellIdentifier];
+    [self setupTableDataSource];
+}
+- (void)setupTableDataSource
+{
+    DWGroup *group1 = [DWGroup groupWithItems:_instructionData.expReagent identifier:SupplierCellIdentifier header:@"试剂厂商" configureBlk:^(SXQSupplierCell *cell,SXQExpReagent  *item) {
+//        cell.delegate = self;
+        [cell configureCellWithItem:item];
     }];
-    self.tableView.dataSource = _reagentDataSource;
+    DWGroup *group2 = [DWGroup groupWithItems:_instructionData.expConsumable identifier:SupplierCellIdentifier header:@"耗材厂商" configureBlk:^(SXQSupplierCell *cell, SXQExpConsumable *item) {
+        [cell configureCellWithItem:item];
+    }];
+    DWGroup *group3 = [DWGroup groupWithItems:_instructionData.expEquipment identifier:SupplierCellIdentifier header:@"设备厂商" configureBlk:^(SXQSupplierCell *cell, SXQExpEquipment *item) {
+        [cell configureCellWithItem:item];
+    }];
+    _supplierDataSource = [[ArrayDataSource alloc] initWithGroups:@[group1,group2,group3]];
+    self.tableView.dataSource = _supplierDataSource;
 }
 - (SXQExpReagent *)reagentForCell:(SXQReagentCell *)cell
 {

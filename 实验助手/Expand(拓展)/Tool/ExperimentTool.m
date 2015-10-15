@@ -5,6 +5,8 @@
 //  Created by sxq on 15/9/16.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import "SXQSupplierData.h"
+#import "SXQSupplierResult.h"
 #import "SXQHttpTool.h"
 #import "SXQURL.h"
 #import "ExperimentTool.h"
@@ -58,6 +60,21 @@
 + (void)fetchSupplierWithReagentID:(NSString *)reagentID success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     
+}
++ (void)loadSupplierDataSuccess:(void (^)(SXQSupplierData *))success failure:(void (^)(NSError *))failure
+{
+    [SXQHttpTool getWithURL:SupplierURL params:nil success:^(id json) {
+        if (success) {
+            SXQSupplierResult *result = [SXQSupplierResult objectWithKeyValues:json];
+            SXQSupplierData *supplierData = result.data;
+            success(supplierData);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
 }
 @end
 @implementation ExperimentParam

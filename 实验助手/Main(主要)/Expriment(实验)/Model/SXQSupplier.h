@@ -15,6 +15,6 @@
 @property (nonatomic,copy) NSString *contacts;
 @property (nonatomic,copy) NSString *telNo;
 @property (nonatomic,copy) NSString *mobilePhone;
-@property (nonatomic,copy) NSString *email;
+@property (nonatomic,copy) NSString *eMail;
 @property (nonatomic,copy) NSString *address;
 @end

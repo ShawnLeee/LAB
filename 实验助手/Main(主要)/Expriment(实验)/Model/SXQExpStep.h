@@ -32,5 +32,5 @@
 @property (nonatomic,strong) NSMutableArray *images;
 @property (nonatomic,assign) CGFloat imageHeight;
 - (void)saveProcessMemo:(NSString *)processMemo;
-- (void)addImage:(UIImage *)image;
+- (void)addImage:(UIImage *)image myExpId:(NSString *)myExpId;
 @end

@@ -51,8 +51,9 @@
 }
 - (void)test:(NSNotification *)notifation
 {
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+    [self.tableView reloadData];
 }
 - (SXQExpStep *)currentStep
 {
@@ -77,6 +78,7 @@
 }
 - (void)p_setupTableView
 {
+    self.view.backgroundColor = [UIColor grayColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"DWStepCell" bundle:nil] forCellReuseIdentifier:@"DWStepCell"];
     [self.tableView registerClass:[DWStepCell class] forCellReuseIdentifier:@"cell"];
     _stepsDataSource = [[ArrayDataSource alloc] initWithItems:@[] cellIdentifier:@"cell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStepFrame *stepFrame) {
@@ -316,7 +318,7 @@
         [MBProgressHUD showError:@"最多可添加9张"];
         return;
     }
-    [step addImage:image];
+    [step addImage:image myExpId:_myExpId];
 }
 #pragma mark 添加评论
 - (void)addRemark:(void (^)())completion

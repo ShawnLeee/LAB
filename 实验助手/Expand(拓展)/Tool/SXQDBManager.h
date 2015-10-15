@@ -7,6 +7,7 @@
 //
 @class SXQExpInstruction,SXQInstructionData,SXQCurrentExperimentData;
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
 @interface SXQDBManager : NSObject
 + (instancetype)sharedManager;
@@ -53,4 +54,8 @@ typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
  *
  */
 - (void)updateMyExpProcessMemoWithExpProcessID:(NSString *)myExpProcessId processMemo:(NSString *)memo;
+/**
+ *  添加图片到对应步骤
+ */
+- (void)addImageWithMyExpId:(NSString *)myExpId expInstructionId:(NSString *)expInstructionId expStepId:(NSString *)expStepId image:(UIImage *)image;
 @end

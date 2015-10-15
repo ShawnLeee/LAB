@@ -33,10 +33,13 @@ static const NSUInteger kImageCount = 9;
                                                                  processMemo:_processMemo];
     });
 }
-- (void)addImage:(UIImage *)image
+- (void)addImage:(UIImage *)image myExpId:(NSString *)myExpId
 {
     [self insertObject:image inImagesAtIndex:self.images.count];
     //添加到数据库
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[SXQDBManager sharedManager] addImageWithMyExpId:myExpId expInstructionId:_expInstructionID expStepId:_expStepID image:image];
+    });
 }
 - (NSString *)description
 {

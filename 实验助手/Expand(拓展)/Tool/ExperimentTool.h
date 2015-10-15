@@ -5,7 +5,7 @@
 //  Created by sxq on 15/9/16.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
-@class SXQExperimentModel,SXQExperimentStep,SXQExperimentResult,SXQExperimentStepResult;
+@class SXQExperimentModel,SXQExperimentStep,SXQExperimentResult,SXQExperimentStepResult,SXQSupplierData;
 #import <Foundation/Foundation.h>
 
 typedef void (^CompletionBlock)(NSArray *resultArray);
@@ -43,4 +43,6 @@ typedef void (^CompletionBlock)(NSArray *resultArray);
  *  @param success  [SXQSupplier]
  */
 + (void)fetchSupplierWithReagentID:(NSString *)reagentID success:(void (^)(NSArray *supplierList))success failure:(void (^)(NSError *error))failure;
+
++ (void)loadSupplierDataSuccess:(void (^)(SXQSupplierData *result))success failure:(void (^)(NSError *error))failure;
 @end

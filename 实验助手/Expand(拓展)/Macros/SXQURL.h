@@ -47,7 +47,7 @@
 #define HotInstructionsURL @"http://hualang.wicp.net:8090/LabAssistant/lab/getHotInstructions"
 //////////////////////////////说明书//////////////////////////////////////////////////////
 
-
+#define SupplierURL @"http://172.18.1.55:8080/LabAssistant/sync/pullCommon"
 //////////////////////////////登录/注册//////////////////////////////////////////////////////
 #define LoginURL @"http://hualang.wicp.net:8090/LabAssistant/login"
 #define SignUpURL @"http://hualang.wicp.net:8090/LabAssistant/register"

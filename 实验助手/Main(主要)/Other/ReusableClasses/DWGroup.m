@@ -29,4 +29,10 @@
     group.identifier = identifier;
     return group;
 }
++ (instancetype)groupWithItems:(NSArray *)items identifier:(NSString *)identifier header:(NSString *)headerTitle configureBlk:(CellConfigureBlock)cellConfigureBlk
+{
+    DWGroup *group = [self groupWithItems:items identifier:identifier header:headerTitle];
+    group.configureBlk = [cellConfigureBlk copy];
+    return group;
+}
 @end

@@ -5,7 +5,6 @@
 //  Created by sxq on 15/10/9.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 @interface SXQExpConsumable : NSObject
@@ -15,7 +14,7 @@
 @property (nonatomic,copy) NSString *consumableType;
 @property (nonatomic,copy) NSString *expConsumableID;
 @property (nonatomic,copy) NSString *expInstructionID;
-
+@property (nonatomic,copy) NSString *consumableName;
 @property (nonatomic,copy) NSString *supplierID;
 
 @end

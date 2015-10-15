@@ -19,13 +19,12 @@ static const CGFloat yPadding =8;
 @property (nonatomic,weak) UILabel *stepDescLabel;
 @property (nonatomic,weak) UILabel *stepRemarkLabel;
 @property (nonatomic,weak) UILabel *stepRemarkContentLabel;
-@property (nonatomic,weak) UIView *photoView;
+@property (nonatomic,weak) PhotoContainer *photoView;
 @end
 @implementation DWStepCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.backgroundColor = [UIColor grayColor];
         [self setupSelf];
     }
     return self;
@@ -33,7 +32,6 @@ static const CGFloat yPadding =8;
 - (void)setupSelf
 {
     UILabel *stepNumLabel = [[UILabel alloc] init];
-    stepNumLabel.backgroundColor = [UIColor redColor];
     stepNumLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:stepNumLabel];
     _stepNumLabel = stepNumLabel;
@@ -55,7 +53,7 @@ static const CGFloat yPadding =8;
     [self.contentView addSubview:stepRemarkContentLabel];
     _stepRemarkContentLabel = stepRemarkContentLabel;
     
-    UIView *photoView = [[UIView alloc] init];
+    PhotoContainer *photoView = [[PhotoContainer alloc] init];
     [self.contentView addSubview:photoView];
     _photoView = photoView;
 }
@@ -64,7 +62,14 @@ static const CGFloat yPadding =8;
     _stepFrame = stepFrame;
     SXQExpStep *expProcess = stepFrame.expStep;
     
-    _stepRemarkLabel.text = @"备注";
+    _photoView.myImages = expProcess.images;
+    if (expProcess.processMemo.length) {
+        _stepRemarkLabel.hidden = NO;
+        _stepRemarkLabel.text = @"备注";
+    }else
+    {
+        _stepRemarkLabel.hidden = YES;
+    }
     _stepNumLabel.text = [NSString stringWithFormat:@"步骤%d",expProcess.stepNum];
     _stepDescLabel.text = expProcess.expStepDesc;
     _stepRemarkContentLabel.text = expProcess.processMemo;
@@ -75,6 +80,7 @@ static const CGFloat yPadding =8;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     _stepRemarkContentLabel.text = self.stepFrame.expStep.processMemo;
+    _photoView.myImages = self.stepFrame.expStep.images;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"needreloadCell" object:self];
 }
 - (void)dealloc

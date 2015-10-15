@@ -9,6 +9,7 @@
 #import "SXQExpStepFrame.h"
 #import "SXQExpStep.h"
 #import "NSString+Size.h"
+#import "PhotoContainer.h"
 static const CGFloat kCellPadding = 10.0;
 static const CGFloat kViewPadding = 10.0;
 static const CGFloat kStepNumWidth = 60;
@@ -24,7 +25,7 @@ static const CGFloat kStepNumWidth = 60;
     //stepNum
     CGFloat stepNumXY = 0;
     CGFloat stepNumW = kStepNumWidth;
-    CGFloat stepNumH = 30;
+    CGFloat stepNumH = 21;
     _stepNumFrame = CGRectMake(stepNumXY, stepNumXY, stepNumW, stepNumH);
     
     //stepDesc
@@ -33,7 +34,7 @@ static const CGFloat kStepNumWidth = 60;
     CGFloat stepDescW = cellWidth - kCellPadding - stepNumW - kViewPadding;
     CGSize descSize = [expStep.expStepDesc sizeWithFixedWidth:stepDescW font:15];
     _stepDescFrame = (CGRect){{stepDescX,stepDescY},descSize};
-    if (expStep.processMemo) {
+    if (expStep.processMemo.length) {
         CGFloat remarkX = stepNumXY;
         CGFloat remarkY = CGRectGetMaxY(_stepDescFrame) + kViewPadding;
         CGFloat remarkW = stepNumW;
@@ -48,21 +49,20 @@ static const CGFloat kStepNumWidth = 60;
     }
     CGFloat padding = 8;
     if (expStep.images.count) {
+        CGSize photoSize = [PhotoContainer photosViewSizeWithPhotosCount:expStep.images.count];
         CGFloat photoX = stepNumXY;
         CGFloat photoY = 0;
-        CGFloat photoW = cellWidth - 2 * kViewPadding;
-        CGFloat photoH = 200;
-        if (expStep.processMemo) {
+        if (expStep.processMemo.length) {
             photoY = CGRectGetMaxY(_remarkContentFrame) + kViewPadding;
         }else
         {
             photoY = CGRectGetMaxY(_stepDescFrame) + kViewPadding;
         }
-        _photosFrame = CGRectMake(photoX, photoY, photoW, photoH);
-        _cellHeight = CGRectGetMaxY(_photosFrame)+ padding;
+        _photosFrame = CGRectMake(photoX, photoY, photoSize.width, photoSize.height);
+        _cellHeight = CGRectGetMaxY(_photosFrame)+ kViewPadding;
     }else
     {
-        if (expStep.processMemo) {
+        if (expStep.processMemo.length) {
             _cellHeight = MAX(CGRectGetMaxY(_remarkFrame),CGRectGetMaxY(_remarkContentFrame)) + padding *2;
         }else
         {

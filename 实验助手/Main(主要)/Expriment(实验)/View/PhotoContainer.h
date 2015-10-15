@@ -9,7 +9,7 @@
 IB_DESIGNABLE
 @interface PhotoContainer : UIView
 @property (nonatomic,strong) NSMutableArray *myImages;
-- (CGFloat)heightOfPhotoContainer;
 - (void)addPhoto:(UIImage *)image updatesConstraintBlk:(void (^)(BOOL success,CGFloat photoHeight))completion;
++ (CGSize)photosViewSizeWithPhotosCount:(NSUInteger)count;
 @end
 

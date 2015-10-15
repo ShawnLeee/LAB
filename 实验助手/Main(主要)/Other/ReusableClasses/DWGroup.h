@@ -43,4 +43,5 @@ typedef void (^CellConfigureBlock)(id cell,id item);
 + (instancetype)groupWithItems:(NSArray *)items;
 
 + (instancetype)groupWithItems:(NSArray *)items identifier:(NSString *)identifier header:(NSString *)headerTitle;
++ (instancetype)groupWithItems:(NSArray *)items identifier:(NSString *)identifier header:(NSString *)headerTitle configureBlk:(CellConfigureBlock)cellConfigureBlk;
 @end

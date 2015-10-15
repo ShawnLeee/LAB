@@ -5,10 +5,14 @@
 //  Created by SXQ on 15/10/2.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-
+#define IWPhotoW 70
+#define IWPhotoH 70
+#define IWPhotoMargin 10
 #import "PhotoContainer.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
+
+#define photoW (([UIScreen mainScreen].bounds.size.width - 2 * 8 - 2 *IWPhotoMargin)/3)
 static NSUInteger CountOfImageView = 9;
 static CGFloat kPadding = 10;
 static NSUInteger numberOfColumns = 3;
@@ -17,6 +21,7 @@ static NSUInteger numberOfColumns = 3;
 @property (nonatomic,assign) CGFloat imageWidth;
 @end
 @implementation PhotoContainer
+@synthesize myImages = _myImages;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super initWithCoder:aDecoder])
@@ -76,31 +81,56 @@ static NSUInteger numberOfColumns = 3;
     [browser show];
 }
 
-- (void)layoutCustomSubviews
+- (void)setMyImages:(NSMutableArray *)myImages
 {
-    [super layoutSubviews];
-    CGFloat imageX = 0;
-    CGFloat imageY = 0;
-    for (int i = 0; i < _myImages.count; ++i) {
-        NSUInteger row = i / numberOfColumns;
-        NSUInteger column = i % numberOfColumns;
-        imageX = column * (_imageWidth + kPadding) + kPadding;
-        imageY = row * (_imageWidth + kPadding) + kPadding;
-        UIImageView *imageView = _imageViews[i];
-        imageView.frame = CGRectMake(imageX, imageY, _imageWidth, _imageWidth);
+    _myImages = myImages;
+    for (int i = 0; i < self.imageViews.count; i++) {
+        UIImageView *imageView = self.imageViews[i];
+        if (i < myImages.count) {
+            imageView.hidden = NO;
+            imageView.image = myImages[i];
+            
+            // 设置子控件的frame
+            int maxColumns = (myImages.count == 4) ? 2 : 3;
+            int col = i % maxColumns;
+            int row = i / maxColumns;
+            CGFloat photoX = col * (photoW + IWPhotoMargin);
+            CGFloat photoY = row * (photoW + IWPhotoMargin);
+            imageView.frame = CGRectMake(photoX, photoY, photoW, photoW);
+            
+            if (myImages.count == 1) {
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                imageView.clipsToBounds = NO;
+            } else {
+                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                imageView.clipsToBounds = YES;
+            }
+        }else
+        {
+            imageView.hidden = YES;
+        }
+        
     }
 }
-- (CGFloat)heightOfPhotoContainer
++ (CGSize)photosViewSizeWithPhotosCount:(NSUInteger)count
 {
-    if (self.myImages.count) {
-        NSUInteger numberOfRows = (_myImages.count - 1)/3 + 1;
-        return numberOfRows * _imageWidth + (numberOfRows + 1) * kPadding;
-    }
-    return 0;
+    // 一行最多有3列
+    int maxColumns = (count == 4) ? 2 : 3;
+    
+    //  总行数
+    int rows = (count + maxColumns - 1) / maxColumns;
+    // 高度
+    CGFloat photosH = rows * photoW + (rows - 1) * IWPhotoMargin;
+    
+    // 总列数
+    int cols = (count >= maxColumns) ? maxColumns : count;
+    // 宽度
+    CGFloat photosW = cols * photoW + (cols - 1) * IWPhotoMargin;
+    
+    return CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * 8, photosH);
+    
 }
 @end
-
-
 
 
 
