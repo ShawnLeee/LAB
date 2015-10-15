@@ -156,7 +156,7 @@ static SXQDBManager *_dbManager = nil;
     //设备表;                     
     NSString *equipmentSQL = @"create table if not exists t_equipment (equipmentID text primary key,equipmentName text)";
     //设备厂商关联表;                 
-    NSString *equipmentMapSQL = @"create table if not exists t_quipmentMap (quipmentMapID text primary key,equipmentID text,supplierID text ,isSuggestion integer)";
+    NSString *equipmentMapSQL = @"create table if not exists t_quipmentMap (equipmentMapID text primary key,equipmentID text,supplierID text ,isSuggestion integer)";
     //供应商
     NSString *supplierSQL = @"create table if not exists t_supplier (supplierID text primary key,supplierName text,supplierType integer,contacts text,telNo text,mobilePhone text,email text,address text)";
     return @[instuctionMainSQL,expReagentSQL,expProcessSQL,expEquipmetnSQL,expConsumableSQL,reagentSQL,reagentMapSQL,consumableSQL,consumableMapSQL,equipmentSQL,equipmentMapSQL,supplierSQL];
@@ -669,7 +669,121 @@ static SXQDBManager *_dbManager = nil;
     [db executeUpdate:insertSql];
     
 }
+#pragma mark 根据试验说明书找试剂
+- (NSArray *)fetchReagentsWithInstructionId:(NSString *)instructionId db:(FMDatabase *)db
+{
+    return nil;
+}
+#pragma mark 根据试剂ID找到所有对应厂商
+- (NSArray *)fetchSuppliersWithReagent:(SXQReagent *)reagent db:(FMDatabase *)db
+{
+    NSString *mapSql = [NSString stringWithFormat:@"select * from t_reagentMap where reagentID = '%@'",reagent.reagentID];
+    FMResultSet *rs = [db executeQuery:mapSql];
+    NSMutableArray *mapArr = [NSMutableArray array];
+    while (rs.next) {
+        SXQReagentMap *reagentMap = [[SXQReagentMap alloc] init];
+        reagentMap.reagentMapID = [rs stringForColumn:@"reagentMapID"];
+        reagentMap.supplierID = [rs stringForColumn:@"supplierID"];
+        reagentMap.reagentID = [rs stringForColumn:@"reagentID"];
+        reagentMap.isSuggestion = [rs boolForColumn:@"isSuggestion"];
+        [mapArr addObject:reagentMap];
+    }
+    NSMutableArray *supplierArr = [NSMutableArray array];
+    [mapArr enumerateObjectsUsingBlock:^(SXQReagentMap *reagentMap, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *supplierSql = [NSString stringWithFormat:@"select * from t_supplier where supplierID = '%@'",reagentMap.supplierID];
+        FMResultSet *rs = [db executeQuery:supplierSql];
+        SXQSupplier *supplier = [[SXQSupplier alloc] init];
+        supplier.supplierID = reagentMap.supplierID;
+        supplier.supplierName = [rs stringForColumn:@"supplierName"];
+        supplier.supplierType = [rs intForColumn:@"supplierType"];
+        supplier.contacts = [rs stringForColumn:@"contacts"];
+        supplier.telNo = [rs stringForColumn:@"telNo"];
+        supplier.mobilePhone = [rs stringForColumn:@"mobiePhone"];
+        supplier.eMail = [rs stringForColumn:@"email"];
+        supplier.address = [rs stringForColumn:@"address"];
+        if (reagentMap.isSuggestion) {
+            reagent.preferSupplier = supplier;
+        }
+        [supplierArr addObject:supplier];
+    }];
+    return [supplierArr copy];
+}
+#pragma mark 根据设备查找厂商
+- (NSArray *)fetchSuppliersWithEquipment:(SXQEquipment *)equipment db:(FMDatabase *)db
+{
+    NSString *mapSql = [NSString stringWithFormat:@"select * from t_quipmentMap where  equipmentID = '%@'",equipment.equipmentID];
+    FMResultSet *rs = [db executeQuery:mapSql];
+    NSMutableArray *mapArr = [NSMutableArray array];
+    while (rs.next) {
+        SXQEquipmentMap *equipMap = [[SXQEquipmentMap alloc] init];
+        equipMap.equipmentMapID = [rs stringForColumn:@"equipmentMapID"];
+        equipMap.equipmentID = [rs stringForColumn:@"equipmentID"];
+        equipMap.supplierID = [rs stringForColumn:@"supplierID"];
+        equipMap.isSuggestion = [rs boolForColumn:@"isSuggestion"];
+        [mapArr addObject:equipMap];
+    }
+    NSMutableArray *supplierArr = [NSMutableArray array];
+    [mapArr enumerateObjectsUsingBlock:^(SXQEquipmentMap *equipmentMap, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *supplierSql = [NSString stringWithFormat:@"select * from t_supplier where supplierID = '%@'",equipmentMap.supplierID];
+        FMResultSet *rs = [db executeQuery:supplierSql];
+        SXQSupplier *supplier = [[SXQSupplier alloc] init];
+        supplier.supplierID = equipmentMap.supplierID;
+        supplier.supplierName = [rs stringForColumn:@"supplierName"];
+        supplier.supplierType = [rs intForColumn:@"supplierType"];
+        supplier.contacts = [rs stringForColumn:@"contacts"];
+        supplier.telNo = [rs stringForColumn:@"telNo"];
+        supplier.mobilePhone = [rs stringForColumn:@"mobiePhone"];
+        supplier.eMail = [rs stringForColumn:@"email"];
+        supplier.address = [rs stringForColumn:@"address"];
+        if (equipmentMap.isSuggestion) {
+            equipment.preferSupplier = supplier;
+        }
+        [supplierArr addObject:supplier];
+    }];
+    return [supplierArr copy];
+}
+#pragma mark 根据耗材找厂商
+- (NSArray *)fetchSuppliersWithConsumable:(SXQConsumable *)consumable db:(FMDatabase *)db
+{
+//    create table if not exists t_consumableMap(consumableMapID text primary key,consumableID text,supplierID text,isSuggestion integer)
+    NSString *mapSql = [NSString stringWithFormat:@"select * from t_consumableMap where consumableID = '%@'",consumable.consumableID];
+    FMResultSet *rs = [db executeQuery:mapSql];
+    NSMutableArray *mapArr = [NSMutableArray array];
+    while (rs.next) {
+        SXQConsumableMap *consumableMap = [[SXQConsumableMap alloc] init];
+        consumableMap.consumableMapID = [rs stringForColumn:@"consumableMapID"];
+        consumableMap.consumableID = [rs stringForColumn:@"consumableID"];
+        consumableMap.supplierID = [rs stringForColumn:@"supplierID"];
+        consumableMap.isSuggestion = [rs boolForColumn:@"isSuggestion"];
+        [mapArr addObject:consumableMap];
+    }
+    NSMutableArray *supplierArr = [NSMutableArray array];
+    [mapArr enumerateObjectsUsingBlock:^(SXQConsumableMap *consumableMap, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *supplierSql = [NSString stringWithFormat:@"select * from t_supplier where supplierID = '%@'",consumableMap.supplierID];
+        FMResultSet *rs = [db executeQuery:supplierSql];
+        SXQSupplier *supplier = [[SXQSupplier alloc] init];
+        supplier.supplierID = consumableMap.supplierID;
+        supplier.supplierName = [rs stringForColumn:@"supplierName"];
+        supplier.supplierType = [rs intForColumn:@"supplierType"];
+        supplier.contacts = [rs stringForColumn:@"contacts"];
+        supplier.telNo = [rs stringForColumn:@"telNo"];
+        supplier.mobilePhone = [rs stringForColumn:@"mobiePhone"];
+        supplier.eMail = [rs stringForColumn:@"email"];
+        supplier.address = [rs stringForColumn:@"address"];
+        if (consumableMap.isSuggestion) {
+            consumable.preferSupplier = supplier;
+        }
+        [supplierArr addObject:supplier];
+    }];
+    return [supplierArr copy];
+}
 @end
+
+
+
+
+
+
 
 
 
