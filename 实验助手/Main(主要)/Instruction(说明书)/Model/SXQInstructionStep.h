@@ -13,5 +13,5 @@
 @property (nonatomic,copy) NSString *expStepDesc;
 @property (nonatomic,copy) NSString *expStepID;
 @property (nonatomic,copy) NSString *expStepTime;
-@property (nonatomic,copy) NSString *stepNum;
+@property (nonatomic,assign) int stepNum;
 @end

@@ -9,13 +9,13 @@
 #import "SXQExpEquipment.h"
 
 @implementation SXQExpEquipment
-- (NSString *)fetchSupplier
+- (SXQSupplier *)fetchSupplier
 {
-    return self.supplier;
+    return self.finalSupplier;
 }
-- (void)updateSupplier:(NSString *)supplier
+- (void)updateSupplier:(SXQSupplier *)supplier
 {
-    self.supplier = supplier;
+    self.finalSupplier = supplier;
 }
 - (NSArray *)totalSuppliers
 {

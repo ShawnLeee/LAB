@@ -81,7 +81,7 @@
 - (void)showPopoverWithItem:(id<SXQSupplierProcotol>)item sender:(UIButton *)sender
 {
     SXQSupplierListController *supplierVC = [[SXQSupplierListController alloc] initWithSuppliers:[item totalSuppliers] supplierChoosedBlk:^(SXQSupplier *supplier) {
-        [item updateSupplier:supplier.supplierName];
+        [item updateSupplier:supplier];
         [_popOver dismissPopoverAnimated:YES];
     }];
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:supplierVC];

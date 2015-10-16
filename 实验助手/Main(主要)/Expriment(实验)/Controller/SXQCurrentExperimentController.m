@@ -15,7 +15,6 @@
 #import "SXQCurrentExperimentController.h"
 #import "SXQExperimentToolBar.h"
 #import "ArrayDataSource+TableView.h"
-#import "SXQExperimentModel.h"
 #import "DWStepCell.h"
 #import "ExperimentTool.h"
 #import "SXQExperimentStepResult.h"
@@ -23,15 +22,15 @@
 #import "TimeRecorder.h"
 #import "SXQExpStep.h"
 #import "SXQCurrentExperimentData.h"
+#import "SXQExperimentModel.h"
 
 @interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,TimeRecorderDelegate>
-@property (nonatomic,copy) NSString *myExpId;
 @property (nonatomic,strong) SXQCurrentExperimentData *currentExperimentData;
 @property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *experimentName;
-
+@property (nonatomic,strong) SXQExperimentModel *experimentModel;
 @property (nonatomic,strong) ArrayDataSource *stepsDataSource;
 /**
  *  正在进行的实验步骤
@@ -41,18 +40,16 @@
 @end
 
 @implementation SXQCurrentExperimentController
-- (instancetype)initWithMyExpId:(NSString *)myExpId
+- (instancetype)initWithExperimentModel:(SXQExperimentModel *)experimentModel
 {
     if (self = [super init]) {
-        _myExpId = [myExpId copy];
+        _experimentModel = experimentModel;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:@"needreloadCell" object:nil];
     }
     return self;
 }
 - (void)test:(NSNotification *)notifation
 {
-//    [self.tableView beginUpdates];
-//    [self.tableView endUpdates];
     [self.tableView reloadData];
 }
 - (SXQExpStep *)currentStep
@@ -86,7 +83,7 @@
     }];
     self.tableView.dataSource = _stepsDataSource;
     
-     _currentExperimentData = [[SXQCurrentExperimentData alloc] initWithMyExpId:_myExpId completion:^(BOOL success) {
+     _currentExperimentData = [[SXQCurrentExperimentData alloc] initWithMyExpId:_experimentModel.myExpID completion:^(BOOL success) {
          NSMutableArray *tmp = [NSMutableArray array];
          [_currentExperimentData.expProcesses enumerateObjectsUsingBlock:^(SXQExpStep *step, NSUInteger idx, BOOL * _Nonnull stop) {
              SXQExpStepFrame *stepFrame = [[SXQExpStepFrame alloc] init];
@@ -118,6 +115,7 @@
 }
 - (void)p_setupSelf
 {
+    _experimentName.text = _experimentModel.experimentName;
     self.navigationItem.title = @"实验步骤说明";
     self.navigationItem.leftBarButtonItem = [self leftBarButton];
 }
@@ -318,7 +316,7 @@
         [MBProgressHUD showError:@"最多可添加9张"];
         return;
     }
-    [step addImage:image myExpId:_myExpId];
+    [step addImage:image myExpId:_experimentModel.myExpID];
 }
 #pragma mark 添加评论
 - (void)addRemark:(void (^)())completion

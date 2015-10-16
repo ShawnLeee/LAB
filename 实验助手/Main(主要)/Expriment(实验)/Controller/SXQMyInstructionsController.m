@@ -73,18 +73,16 @@ typedef NS_ENUM(NSUInteger,SectionType){
                 //下载说明书
                 [InstructionTool downloadInstructionWithID:instruction.expInstructionID success:^(SXQInstructionDownloadResult *result) {
                     [SXQInstructionManager downloadInstruction:result.data completion:^(BOOL success, NSDictionary *info) {
-                        [self changeViewControllerWithInstructionData:result.data];
+                        
+                        [self addExperimentWithExpinstructionId:instruction.expInstructionID];
                     }];
                 } failure:^(NSError *error) {
                     
                 }];
             }
             else{//已经下载，取出实验说明书的数据
-                __block SXQInstructionData *instructionData = nil;
-                dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                     instructionData = [[SXQDBManager sharedManager] fetchInstuctionDataWithInstructionID:instruction.expInstructionID];
-                });
-                [self changeViewControllerWithInstructionData:instructionData];
+                
+                [self addExperimentWithExpinstructionId:instruction.expInstructionID];
             }
             break;
         }
@@ -92,16 +90,21 @@ typedef NS_ENUM(NSUInteger,SectionType){
         {
             DWGroup *group = self.groups[indexPath.section];
             SXQMyGenericInstruction *genericInstruciton = group.items[indexPath.row];
-            [[SXQDBManager sharedManager] fetchInstructionDataWithInstructionID:genericInstruciton.expInstructionID success:^(SXQInstructionData *instructionData) {
-                [self changeViewControllerWithInstructionData:instructionData];
-            }];
-            [SXQMyExperimentManager addExperimentWithInstructionId:genericInstruciton.expInstructionID];
+            [self addExperimentWithExpinstructionId:genericInstruciton.expInstructionID];
             break;
         }           
         default:
             break;
     }
 
+}
+- (void)addExperimentWithExpinstructionId:(NSString *)expinstructionID
+{
+      __block SXQInstructionData *instructionData = nil;
+        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+             instructionData = [[SXQDBManager sharedManager] fetchInstuctionDataWithInstructionID:expinstructionID];
+        });
+        [self changeViewControllerWithInstructionData:instructionData];
 }
 - (void)changeViewControllerWithInstructionData:(SXQInstructionData *)instructionData
 {

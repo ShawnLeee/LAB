@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SXQCurrentExperimentController : UIViewController
-- (instancetype)initWithMyExpId:(NSString *)myExpId;
+- (instancetype)initWithExperimentModel:(SXQExperimentModel *)experimentModel;
 @end

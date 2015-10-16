@@ -10,7 +10,7 @@
 
 @interface SXQExperimentModel : NSObject
 @property (nonatomic,copy) NSString *myExpID;
-@property (nonatomic,copy) NSString *expState;
+@property (nonatomic,assign) int expState;
 @property (nonatomic,copy) NSString *expInstructionID;
 @property (nonatomic,copy) NSString *experimentName;
 @end

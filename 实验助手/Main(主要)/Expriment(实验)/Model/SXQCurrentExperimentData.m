@@ -31,6 +31,7 @@
     return self;
     
 }
+
 - (void)loadData
 {
     [[SXQDBManager sharedManager] loadCurrentDataWithMyExpId:_myExpId completion:^(SXQCurrentExperimentData *currentExprimentData) {

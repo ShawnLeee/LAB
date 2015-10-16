@@ -31,11 +31,11 @@
 - (void)setupNav{
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"确认" action:^{
        //写入数据到正在进行的实验
-        [SXQMyExperimentManager addExperimentWithInstructionData:_instructionData completion:^(BOOL success,NSString *myExpId) {
+        [SXQMyExperimentManager addExperimentWithInstructionData:_instructionData completion:^(BOOL success,SXQExperimentModel *experiment) {
             if(success)//转到正在该实验正在进行的界面
             {
                 UIViewController *rootVC = [self.navigationController.viewControllers firstObject];
-                SXQCurrentExperimentController *currentVC = [[SXQCurrentExperimentController alloc] initWithMyExpId:myExpId];
+                SXQCurrentExperimentController *currentVC = [[SXQCurrentExperimentController alloc] initWithExperimentModel:experiment];
                 currentVC.hidesBottomBarWhenPushed = YES;
                 NSArray *viewControllers = @[rootVC,currentVC];
                 [self.navigationController setViewControllers:viewControllers animated:YES];

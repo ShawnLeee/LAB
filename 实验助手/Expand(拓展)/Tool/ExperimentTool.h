@@ -14,7 +14,7 @@ typedef void (^CompletionBlock)(NSArray *resultArray);
 @property (nonatomic,copy) NSString *userID;
 @property (nonatomic,copy) NSString *myExpID;
 @property (nonatomic,copy) NSString *expInstructionID;
-@property (nonatomic,copy) NSString *expState;
+@property (nonatomic,assign) int expState;
 + (instancetype)paramWithExperimentModel:(SXQExperimentModel *)model;
 @end
 

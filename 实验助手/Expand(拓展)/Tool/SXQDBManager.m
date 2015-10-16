@@ -6,6 +6,7 @@
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
 @import UIKit;
+#import "SXQExperimentModel.h"
 #import "SXQSupplierData.h"
 #import "SXQConsumable.h"
 #import "SXQConsumableMap.h"
@@ -257,13 +258,28 @@ static SXQDBManager *_dbManager = nil;
         step.expStepID = [rs stringForColumn:@"expStepID"];
         step.expStepDesc = [rs stringForColumn:@"expStepDesc"];
         step.expStepTime = [rs stringForColumn:@"expStepTime"];
-        step.stepNum = [rs stringForColumn:@"stepNum"];
+        step.stepNum = [rs intForColumn:@"stepNum"];
         [stepArr addObject:step];
     }
     return [stepArr copy];
     
 }
-
+#pragma mark - 根据实验ID获取实验步骤：SXQExpStep
+- (NSArray *)fetchExpStepsWithInstructionID:(NSString *)instructionId db:(FMDatabase *)db
+{
+    NSMutableArray *stepArr = [NSMutableArray array];
+    FMResultSet *rs = [db executeQuery:@"select * from t_expProcess where  expInstructionID == ?",instructionId];
+    while (rs.next) {
+        SXQExpStep *step = [SXQExpStep new];
+        step.expInstructionID = instructionId;
+        step.expStepID = [rs stringForColumn:@"expStepID"];
+        step.expStepDesc = [rs stringForColumn:@"expStepDesc"];
+        step.expStepTime = [rs stringForColumn:@"expStepTime"];
+        step.stepNum = [rs intForColumn:@"stepNum"];
+        [stepArr addObject:step];
+    }
+    return [stepArr copy];
+}
 
 
 
@@ -324,13 +340,11 @@ static SXQDBManager *_dbManager = nil;
     }
     return supplier;
 }
-- (void)fetchInstructionDataWithInstructionID:(NSString *)instructionId success:(void (^)(SXQInstructionData *))success
+- (void)addExpWithInstructionData:(SXQInstructionData *)instructionData completion:(void (^)(BOOL, SXQExperimentModel *))completion
 {
     
-}
-- (void)addExpWithInstructionData:(SXQInstructionData *)instructionData completion:(void (^)(BOOL, NSString *))completion
-{
     NSString *myExpId = [self uuid];
+    __block SXQExperimentModel *experiment = [[SXQExperimentModel alloc] init];
     [_queue inDatabase:^(FMDatabase *db) {
         //1.write data to t_myExp
         [self insertIntoMyExp:instructionData.expInstructionMain myExpId:myExpId db:db];
@@ -358,9 +372,24 @@ static SXQDBManager *_dbManager = nil;
             NSString *myExpReagentId = [self uuid];
             [self insertIntoMyExpReagent:reagent myExpReagentId:myExpReagentId myExpId:myExpId db:db];
         }];
+        //6
+        experiment = [self fetchExperimentWithMyExpId:myExpId db:db];
     }];
     [_queue close];
-    completion(YES,myExpId);
+    completion(YES,experiment);
+}
+- (SXQExperimentModel *)fetchExperimentWithMyExpId:(NSString *)myExpId db:(FMDatabase *)db
+{
+    NSString *querySql = [NSString stringWithFormat:@"select * from t_myExp where MyExpID = '%@'",myExpId];
+    FMResultSet *rs = [db executeQuery:querySql];
+    SXQExperimentModel *experiment = [[SXQExperimentModel alloc] init];
+    while (rs.next) {
+        experiment.myExpID = [rs stringForColumn:@"MyExpID"];
+        experiment.expState = [rs intForColumn:@"ExpState"];
+        experiment.expInstructionID =  [rs stringForColumn:@"ExpInstructionID"];
+        experiment.experimentName = [self fetchExperimentNameWithInstructionID:experiment.expInstructionID db:db];
+    }
+    return experiment;
 }
 #pragma mark 说明书操作
 /**
@@ -844,7 +873,7 @@ static SXQDBManager *_dbManager = nil;
     }
     return [tmpArr copy];
 }
-#pragma mark - 根据说明书着到实验的相关数据
+#pragma mark - 根据说明书找到实验的相关数据
 /**
  *   根据说明书着到实验的相关数据
  *
@@ -858,18 +887,44 @@ static SXQDBManager *_dbManager = nil;
         instructionData.expEquipment = [self fetchEquipmentWithInstructionID:instructionID db:db];
         instructionData.expReagent = [self fetchReagentsWithExpInstructionID:instructionID db:db];
         instructionData.expConsumable  = [self fetchConsumableWithInstructionID:instructionID db:db];
+        instructionData.expProcess = [self fetchExpStepsWithInstructionID:instructionID db:db];
+        instructionData.expInstructionMain = [self fetchInstructionWithInstructionID:instructionID db:db];
     }];
     [_queue close];
     return instructionData;
 }
-
+#pragma  mark 获取正在进行的实验
+- (NSArray *)fetchOnDoingExperiment
+{
+    __block NSMutableArray *tmpArr = [NSMutableArray array];
+    [_queue inDatabase:^(FMDatabase *db) {
+//    NSString *myExpSQL = @"create table if not exists t_myExp( MyExpID text primary key, ExpInstructionID text, UserID text, CreateTime numeric, CreateYear integer,CreateMonth  integer, FinishTime numeric, ExpVersion integer, IsReviewed integer,IsCreateReport  integer, IsUpload integer, ReportName text, ReportLocation text,ReportServerPath  text,  ExpState integer,ExpMemo  text);";
+        int state = 0;
+        NSString *querySql = [NSString stringWithFormat:@"select * from t_myExp where ExpState = '%d'",state];
+        FMResultSet *rs = [db executeQuery:querySql];
+        while (rs.next) {
+            SXQExperimentModel *experiment = [[SXQExperimentModel alloc] init];
+            experiment.myExpID = [rs stringForColumn:@"MyExpID"];
+            experiment.expState = [rs intForColumn:@"ExpState"];
+            experiment.expInstructionID =  [rs stringForColumn:@"ExpInstructionID"];
+            experiment.experimentName = [self fetchExperimentNameWithInstructionID:experiment.expInstructionID db:db];
+            [tmpArr addObject:experiment];
+        }
+    }];
+    [_queue close];
+    return tmpArr;
+}
+- (NSString *)fetchExperimentNameWithInstructionID:(NSString *)instructionID db:(FMDatabase *)db
+{
+    NSString *querySql = [NSString stringWithFormat:@"select experimentname from t_expinstructionsMain where expinstructionid = '%@'",instructionID];
+    NSString *experimentName = nil;
+    FMResultSet *rs = [db executeQuery:querySql];
+    while (rs.next) {
+        experimentName = [rs stringForColumn:@"experimentname"];
+    }
+    return experimentName;
+}
 @end
-
-
-
-
-
-
 
 
 

@@ -5,7 +5,7 @@
 //  Created by sxq on 15/9/25.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-@class SXQExpInstruction,SXQInstructionData,SXQCurrentExperimentData;
+@class SXQExpInstruction,SXQInstructionData,SXQCurrentExperimentData,SXQExperimentModel;
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
@@ -36,13 +36,9 @@ typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
  */
 - (NSArray *)querySupplierWithReagetID:(NSString *)reagentID;
 /**
- *  取出说明书数据
- */
-- (void)fetchInstructionDataWithInstructionID:(NSString *)instructionId success:(void (^)(SXQInstructionData *instructionData))success;
-/**
  *  添加实验
  */
-- (void)addExpWithInstructionData:(SXQInstructionData *)instructionData completion:(void (^)(BOOL success,NSString *myExpId))completion;
+- (void)addExpWithInstructionData:(SXQInstructionData *)instructionData completion:(void (^)(BOOL success,SXQExperimentModel *experiment))completion;
 /**
  *  根据我的实验ID获取正在我的实验
  *
@@ -62,4 +58,11 @@ typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
  *  根据说明书ID加载说明书数据
  */
 - (SXQInstructionData *)fetchInstuctionDataWithInstructionID:(NSString *)instructionID;
+/**
+ *  获取正在进行的实验
+ */
+- (NSArray *)fetchOnDoingExperiment;
+/**
+ *  获取已完成的实验
+ */
 @end

@@ -32,5 +32,5 @@
 /**
  *  供应商
  */
-@property (nonatomic,copy) NSString *supplier;
+@property (nonatomic,strong) SXQSupplier *finalSupplier;
 @end

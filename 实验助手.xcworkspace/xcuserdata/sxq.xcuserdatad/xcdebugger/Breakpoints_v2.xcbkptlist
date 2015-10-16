@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Expand(&#x62d3;&#x5c55;)/Tool/SXQDBManager.m"
-            timestampString = "466587844.349079"
+            timestampString = "466675361.757326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-setupDataBase"
             landmarkType = "5">
             <Actions>
@@ -76,11 +76,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Expand(&#x62d3;&#x5c55;)/Tool/SXQDBManager.m"
-            timestampString = "466658831.545035"
+            timestampString = "466675361.757326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-insertInstruciton:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -115,36 +115,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
-            filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Main(&#x4e3b;&#x8981;)/Expriment(&#x5b9e;&#x9a8c;)/Controller/SXQCurrentExperimentController.m"
-            timestampString = "466569278.516377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-initWithMyExpId:"
-            landmarkType = "5">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = " expression myExpId = @&quot;811C308FE72A4D17A8E1F04F4830CC89&quot;">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Expand(&#x62d3;&#x5c55;)/Tool/SXQDBManager.m"
-            timestampString = "466658831.545035"
+            timestampString = "466679233.532092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
             landmarkName = "-fetchImageWithMyExpId:expStepId:db:"
             landmarkType = "5">
          </BreakpointContent>

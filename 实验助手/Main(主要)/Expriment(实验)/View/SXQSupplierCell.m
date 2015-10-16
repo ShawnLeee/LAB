@@ -33,13 +33,13 @@
             subscribeNext:^(NSString *reagentName) {
                 _itemLabel.text = reagentName;
         }];
-        [[RACObserve(reagent, supplier)
+        [[RACObserve(reagent, finalSupplier)
           
-            filter:^BOOL(NSString *supplierName) {
-                return supplierName != nil;
+            filter:^BOOL(SXQSupplier *finalSupplier) {
+                return finalSupplier != nil;
         }]
-            subscribeNext:^(NSString *supplierName) {
-                [_supplierBtn setTitle:supplierName forState:UIControlStateNormal];
+            subscribeNext:^(SXQSupplier *finalSupplier) {
+                [_supplierBtn setTitle:finalSupplier.supplierName forState:UIControlStateNormal];
         }];
     }else if([item isKindOfClass:[SXQExpConsumable class]])
     {
@@ -55,12 +55,12 @@
         {
             [_supplierBtn setTitle:kDefaultBtnTitle forState:UIControlStateNormal];
         }
-        [[RACObserve(consumble, supplier)
-          filter:^BOOL(NSString *supplier) {
-            return supplier != nil;
+        [[RACObserve(consumble, finalSupplier)
+          filter:^BOOL(SXQSupplier *finalSupplier) {
+            return finalSupplier != nil;
         }]
-         subscribeNext:^(NSString *supplier) {
-             [_supplierBtn setTitle:supplier forState:UIControlStateNormal];
+         subscribeNext:^(SXQSupplier *finalSupplier) {
+             [_supplierBtn setTitle:finalSupplier.supplierName forState:UIControlStateNormal];
         }];
     }else
     {
@@ -75,12 +75,12 @@
         {
             [_supplierBtn setTitle:kDefaultBtnTitle forState:UIControlStateNormal];
         }
-        [[RACObserve(equipment, supplier)
-          filter:^BOOL(NSString *supplier) {
-            return supplier != nil;
+        [[RACObserve(equipment, finalSupplier)
+          filter:^BOOL(SXQSupplier *finalSupplier) {
+            return finalSupplier != nil;
         }]
-         subscribeNext:^(NSString *supplier) {
-            [_supplierBtn setTitle:supplier forState:UIControlStateNormal];
+         subscribeNext:^(SXQSupplier *finalSupplier) {
+            [_supplierBtn setTitle:finalSupplier.supplierName forState:UIControlStateNormal];
         }];
     }
 }
