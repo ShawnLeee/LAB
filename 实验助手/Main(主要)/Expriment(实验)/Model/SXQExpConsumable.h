@@ -7,8 +7,8 @@
 //
 @class SXQSupplier;
 #import <Foundation/Foundation.h>
-
-@interface SXQExpConsumable : NSObject
+#import "SXQSupplierProtocol.h"
+@interface SXQExpConsumable : NSObject<SXQSupplierProcotol>
 @property (nonatomic,assign) int consumableCount;
 @property (nonatomic,copy) NSString *consumableFactory;
 @property (nonatomic,copy) NSString *consumableID;
@@ -26,4 +26,8 @@
  *  所有供应商
  */
 @property (nonatomic,strong) NSArray *suppliers;
+/**
+ *  供应商
+ */
+@property (nonatomic,copy) NSString *supplier;
 @end

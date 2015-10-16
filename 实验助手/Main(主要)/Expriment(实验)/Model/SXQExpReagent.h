@@ -6,9 +6,10 @@
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
 @class SXQSupplier;
+#import "SXQSupplierProtocol.h"
 #import <Foundation/Foundation.h>
 
-@interface SXQExpReagent : NSObject
+@interface SXQExpReagent : NSObject<SXQSupplierProcotol>
 @property (nonatomic,copy) NSString *expReagentID;
 @property (nonatomic,copy) NSString *expInstructionID;
 @property (nonatomic,copy) NSString *reagentID;
@@ -28,4 +29,8 @@
  *   所有供应商
  */
 @property (nonatomic,strong) NSArray *suppliers;
+/**
+ *  供应商
+ */
+@property (nonatomic,copy) NSString *supplier;
 @end

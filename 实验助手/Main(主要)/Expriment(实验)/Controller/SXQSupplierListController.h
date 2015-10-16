@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 typedef void (^SupplierChoosedBlk)(SXQSupplier *supplier);
 @interface SXQSupplierListController : UITableViewController
-- (instancetype)initWithReagent:(SXQExpReagent *)reagent supplierChoosedBlk:(SupplierChoosedBlk)supplierBlk;
+- (instancetype)initWithSuppliers:(NSArray *)suppliers supplierChoosedBlk:(SupplierChoosedBlk)supplierBlk;
 @end

@@ -14,17 +14,15 @@
 @interface SXQSupplierListController ()
 @property (nonatomic,copy) SupplierChoosedBlk supplierBlk;
 @property (nonatomic,strong) ArrayDataSource *supplierDataSource;
-@property (nonatomic,strong) SXQSupplierListData *supplierData;
-@property (nonatomic,copy) NSString *reagentID;
+@property (nonatomic,strong) NSArray *suppliers;
 @end
 
 @implementation SXQSupplierListController
-- (instancetype)initWithReagent:(SXQExpReagent *)reagent supplierChoosedBlk:(SupplierChoosedBlk)supplierBlk
+- (instancetype)initWithSuppliers:(NSArray *)suppliers supplierChoosedBlk:(SupplierChoosedBlk)supplierBlk
 {
     if (self = [super init]) {
-        _reagentID = reagent.reagentID;
+        _suppliers = suppliers;
         _supplierBlk = [supplierBlk copy];
-        
     }
     return self;
 }
@@ -41,20 +39,15 @@
 -(void)setupTheData
 {
     
-    _supplierDataSource = [[ArrayDataSource alloc] initWithItems:@[]  cellIdentifier:@"cell" cellConfigureBlock:^(UITableViewCell *cell,SXQSupplier *supplier) {
+    _supplierDataSource = [[ArrayDataSource alloc] initWithItems:_suppliers  cellIdentifier:@"cell" cellConfigureBlock:^(UITableViewCell *cell,SXQSupplier *supplier) {
         cell.textLabel.text = supplier.supplierName;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }];
-    
-    _supplierData = [[SXQSupplierListData alloc] initWithReagentID:_reagentID dataLoadedComplete:^(BOOL success) {
-        _supplierDataSource.items = _supplierData.suppliers;
-        [self.tableView reloadData];
-    }];
+    self.tableView.dataSource = _supplierDataSource;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SXQSupplier *supplier = _supplierData.suppliers[indexPath.row];
-    _supplierBlk(supplier);
+    _supplierBlk(_suppliers[indexPath.row]);
 }
 
 @end

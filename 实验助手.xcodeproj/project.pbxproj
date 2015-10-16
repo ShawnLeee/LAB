@@ -519,6 +519,7 @@
 		B0F73BB41BBBB3E600B3D0A0 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		B0F73BB81BBBC1BE00B3D0A0 /* SXQSupplierListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQSupplierListData.h; sourceTree = "<group>"; };
 		B0F73BB91BBBC1BE00B3D0A0 /* SXQSupplierListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQSupplierListData.m; sourceTree = "<group>"; };
+		B0F8A1451BD0CEA8004BAA02 /* SXQSupplierProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQSupplierProtocol.h; sourceTree = "<group>"; };
 		B0F8BF0A1BB0F7DE00F434FE /* LoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTool.h; sourceTree = "<group>"; };
 		B0F8BF0B1BB0F7DE00F434FE /* LoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTool.m; sourceTree = "<group>"; };
 		B0F939911BA166D700D093F9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -1254,6 +1255,7 @@
 			children = (
 				B0E054B81B94715A00C7F9D0 /* View */,
 				B0C73CC91B9326F300F4B6D2 /* Model */,
+				B0F8A1451BD0CEA8004BAA02 /* SXQSupplierProtocol.h */,
 			);
 			name = "Common(公用)";
 			path = "Vender(第三方)/Common(公用)";

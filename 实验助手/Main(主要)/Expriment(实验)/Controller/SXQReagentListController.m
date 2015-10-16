@@ -22,9 +22,12 @@
 #import "SXQMyGenericInstruction.h"
 #import "SXQInstructionData.h"
 #import "SXQSupplierCell.h"
+
+#import "SXQSupplierProtocol.h"
+
 #define ReagentCellIdentifier @"Reagent Cell"
 #define SupplierCellIdentifier @"Supplier Cell"
-@interface SXQReagentListController ()<SXQReagentCellDelegate>
+@interface SXQReagentListController ()<SXQSupplierDelegate>
 @property (nonatomic,strong) id instruction;
 @property (nonatomic,strong) ArrayDataSource *reagentDataSource;
 @property (nonatomic,strong) SXQReagentListData *reagentData;
@@ -55,13 +58,15 @@
 - (void)setupTableDataSource
 {
     DWGroup *group1 = [DWGroup groupWithItems:_instructionData.expReagent identifier:SupplierCellIdentifier header:@"试剂厂商" configureBlk:^(SXQSupplierCell *cell,SXQExpReagent  *item) {
-//        cell.delegate = self;
+        cell.delegate = self;
         [cell configureCellWithItem:item];
     }];
     DWGroup *group2 = [DWGroup groupWithItems:_instructionData.expConsumable identifier:SupplierCellIdentifier header:@"耗材厂商" configureBlk:^(SXQSupplierCell *cell, SXQExpConsumable *item) {
+        cell.delegate = self;
         [cell configureCellWithItem:item];
     }];
     DWGroup *group3 = [DWGroup groupWithItems:_instructionData.expEquipment identifier:SupplierCellIdentifier header:@"设备厂商" configureBlk:^(SXQSupplierCell *cell, SXQExpEquipment *item) {
+        cell.delegate = self;
         [cell configureCellWithItem:item];
     }];
     _supplierDataSource = [[ArrayDataSource alloc] initWithGroups:@[group1,group2,group3]];
@@ -72,10 +77,11 @@
     NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
     return _reagentData.reagents[indexpath.row];
 }
-- (void)showPopoverWithReagent:(SXQExpReagent *)reagent sender:(UIButton *)sender
+
+- (void)showPopoverWithItem:(id<SXQSupplierProcotol>)item sender:(UIButton *)sender
 {
-    SXQSupplierListController *supplierVC = [[SXQSupplierListController alloc] initWithReagent:reagent supplierChoosedBlk:^(SXQSupplier *supplier) {
-        [sender setTitle:supplier.supplierName forState:UIControlStateNormal];
+    SXQSupplierListController *supplierVC = [[SXQSupplierListController alloc] initWithSuppliers:[item totalSuppliers] supplierChoosedBlk:^(SXQSupplier *supplier) {
+        [item updateSupplier:supplier.supplierName];
         [_popOver dismissPopoverAnimated:YES];
     }];
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:supplierVC];
@@ -84,10 +90,17 @@
     popover.arrowDirection = FPPopoverArrowDirectionAny;
     [popover presentPopoverFromView:sender];
 }
-#pragma mark reagentcell delegate method
-- (void)reagentCell:(SXQReagentCell *)reagentCell clickedSupplierButton:(UIButton *)button
+#pragma mark cell delegate method
+- (void)supplierCell:(SXQSupplierCell *)cell clickedBtn:(UIButton *)button
 {
-    [self showPopoverWithReagent:[self reagentForCell:reagentCell] sender:button];
+    [self showPopoverWithItem:[self itemForCell:cell] sender:button];
+}
+- (id<SXQSupplierProcotol>)itemForCell:(SXQSupplierCell *)cell
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    DWGroup *group = _supplierDataSource.items[indexPath.section];
+    return group.items[indexPath.row];
+    
 }
 #pragma mark setupNav
 - (void)setupNav

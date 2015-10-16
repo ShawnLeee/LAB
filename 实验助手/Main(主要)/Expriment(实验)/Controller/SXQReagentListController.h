@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 @interface SXQReagentListController : UITableViewController
 - (instancetype)initWithExpInstructionData:(SXQInstructionData *)instructionData;
-- (instancetype)initWithExpInstruction:(id)instruction;
 @end

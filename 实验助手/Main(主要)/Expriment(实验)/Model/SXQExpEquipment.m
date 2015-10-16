@@ -9,5 +9,16 @@
 #import "SXQExpEquipment.h"
 
 @implementation SXQExpEquipment
-
+- (NSString *)fetchSupplier
+{
+    return self.supplier;
+}
+- (void)updateSupplier:(NSString *)supplier
+{
+    self.supplier = supplier;
+}
+- (NSArray *)totalSuppliers
+{
+    return self.suppliers;
+}
 @end
