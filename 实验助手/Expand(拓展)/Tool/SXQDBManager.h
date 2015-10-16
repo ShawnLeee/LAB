@@ -58,4 +58,8 @@ typedef void  (^CompletionHandler)(BOOL success,NSDictionary *info);
  *  添加图片到对应步骤
  */
 - (void)addImageWithMyExpId:(NSString *)myExpId expInstructionId:(NSString *)expInstructionId expStepId:(NSString *)expStepId image:(UIImage *)image;
+/**
+ *  根据说明书ID加载说明书数据
+ */
+- (SXQInstructionData *)fetchInstuctionDataWithInstructionID:(NSString *)instructionID;
 @end

@@ -80,9 +80,11 @@ typedef NS_ENUM(NSUInteger,SectionType){
                 }];
             }
             else{//已经下载，取出实验说明书的数据
-                [[SXQDBManager sharedManager] fetchInstructionDataWithInstructionID:instruction.expInstructionID success:^(SXQInstructionData *instructionData) {
-                    [self changeViewControllerWithInstructionData:instructionData];
-                }];
+                __block SXQInstructionData *instructionData = nil;
+                dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                     instructionData = [[SXQDBManager sharedManager] fetchInstuctionDataWithInstructionID:instruction.expInstructionID];
+                });
+                [self changeViewControllerWithInstructionData:instructionData];
             }
             break;
         }

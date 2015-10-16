@@ -5,7 +5,7 @@
 //  Created by sxq on 15/10/9.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-
+@class SXQSupplier;
 #import <Foundation/Foundation.h>
 
 @interface SXQExpEquipment : NSObject
@@ -16,4 +16,12 @@
 @property (nonatomic,copy)  NSString *expInstructionID;
 
 @property (nonatomic,copy) NSString *supplierId;
+/**
+ *  建议供应商
+ */
+@property (nonatomic,strong) SXQSupplier *preferSupplier;
+/**
+ *  所有供应商
+ */
+@property (nonatomic,strong) NSArray *suppliers;
 @end
