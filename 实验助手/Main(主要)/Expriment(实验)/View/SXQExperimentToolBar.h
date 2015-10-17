@@ -21,5 +21,6 @@ typedef NS_ENUM(NSUInteger, ExperimentTooBarButtonType)
 @end
 
 @interface SXQExperimentToolBar : UIView
+@property (weak, nonatomic) IBOutlet UIButton *starBtn;
 @property (nonatomic,weak) id<SXQExperimentToolBarDelegate> delegate;
 @end

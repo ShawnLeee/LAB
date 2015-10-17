@@ -9,7 +9,6 @@
 #import "SXQExperimentToolBar.h"
 @interface SXQExperimentToolBar ()
 @property (strong, nonatomic) IBOutlet UIView *view;
-@property (weak, nonatomic) IBOutlet UIButton *starBtn;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *reportBtn;

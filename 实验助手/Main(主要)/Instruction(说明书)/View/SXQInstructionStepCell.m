@@ -14,7 +14,7 @@
 @implementation SXQInstructionStepCell
 - (void)configureCellWithItem:(SXQInstructionStep *)step
 {
-    _stepLabel.text = [NSString stringWithFormat:@"步骤 %@ (大约%@分钟)",step.stepNum,step.expStepTime];
+    _stepLabel.text = [NSString stringWithFormat:@"步骤 %d (大约%@分钟)",step.stepNum,step.expStepTime];
     _stepContentLabel.text = step.expStepDesc;
 }
 @end

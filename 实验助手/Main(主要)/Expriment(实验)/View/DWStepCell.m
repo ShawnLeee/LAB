@@ -31,6 +31,8 @@ static const CGFloat yPadding =8;
 }
 - (void)setupSelf
 {
+    self.layer.cornerRadius = 8;
+    self.clipsToBounds = YES;
     UILabel *stepNumLabel = [[UILabel alloc] init];
     stepNumLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:stepNumLabel];

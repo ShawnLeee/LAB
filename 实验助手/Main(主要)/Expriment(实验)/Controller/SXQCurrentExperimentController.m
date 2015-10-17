@@ -5,6 +5,8 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import "RACEXTScope.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SXQExpStepFrame.h"
 #import "SXQSaveReagentController.h"
 #import "SXQMyExperimentManager.h"
@@ -75,7 +77,8 @@
 }
 - (void)p_setupTableView
 {
-    self.view.backgroundColor = [UIColor grayColor];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-grey"]];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"DWStepCell" bundle:nil] forCellReuseIdentifier:@"DWStepCell"];
     [self.tableView registerClass:[DWStepCell class] forCellReuseIdentifier:@"cell"];
     _stepsDataSource = [[ArrayDataSource alloc] initWithItems:@[] cellIdentifier:@"cell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStepFrame *stepFrame) {
@@ -99,11 +102,12 @@
 - (void)p_setupTableFooter
 {
     SXQExperimentToolBar *toolBar = [[SXQExperimentToolBar alloc] init];
-    toolBar.delegate = self;
+//    toolBar.delegate = self;
     [self.view addSubview:toolBar];
     _toolBar = toolBar;
     toolBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self layoutToolBar];
+    [self binding];
     
 }
 - (void)layoutToolBar
@@ -345,5 +349,111 @@
 {
     SXQExpStepFrame *stepFrame = _stepsDataSource.items[indexPath.row];
     return stepFrame.cellHeight;
+}
+- (void)binding
+{
+    @weakify(self)
+   [[[[[[[[[[_toolBar.starBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+       flattenMap:^RACStream *(id value) {
+        @strongify(self)
+         return [self isChoosingSignal];
+     }]
+       filter:^BOOL(NSNumber *ischosing) {
+        return [ischosing boolValue];
+    }]
+       flattenMap:^RACStream *(id value) {
+        @strongify(self)
+        return [self isTimingSignal];
+    }]
+      
+      filter:^BOOL(NSNumber *isTiming) {
+         return [isTiming boolValue];
+     }]
+      flattenMap:^RACStream *(id value) {
+         @strongify(self)
+         return [self suspendTimerSignal];
+     }]
+      filter:^BOOL(NSNumber *isSuspend) {
+         return [isSuspend boolValue];
+     }]
+    flattenMap:^RACStream *(id value) {
+        @strongify(self)
+        return [self isAddReagentLocation];
+    }]
+    filter:^BOOL(NSNumber *isAdd) {
+        return [isAdd boolValue];
+    }]
+     subscribeNext:^(id value) {
+         @strongify(self)
+         [self addReagentLocation];
+    }];
+}
+- (void)addReagentLocation
+{
+    NSLog(@"试剂已保存");
+}
+- (RACSignal *)isChoosingSignal
+{
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        if ([self currentStep] == nil) {
+            [MBProgressHUD showError:@"请选择试验步骤!"];
+        }
+        [subscriber sendNext:@([self currentStep] != nil)];
+        [subscriber sendCompleted];
+        return nil;
+    }];
+}
+- (RACSignal *)isTimingSignal
+{
+    SXQExpStep *step = [self currentStep];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:@(step.isUserTimer)];
+        [subscriber sendCompleted];
+        if (step.isUserTimer) {
+            //询问是否暂停计时器，添加试剂保存位置
+        }else
+        {
+            //开启计时器
+            step.isUserTimer = YES;
+            NSLog(@"开启计时器！！！！");
+        }
+        return nil;
+    }];
+}
+- (RACSignal *)suspendTimerSignal
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"暂停在此步骤" message:self.currentStep.expStepDesc preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [subscriber sendNext:@(YES)];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [subscriber sendNext:@(NO)];
+        }];
+        [alertVC addAction:action];
+        [alertVC addAction:cancelAction];
+        [self presentViewController:alertVC animated:YES completion:^{
+        }];
+        return nil;
+    }];
+}
+- (RACSignal *)isAddReagentLocation
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        UIAlertController *remarkAlerVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *saveReagentAction = [UIAlertAction actionWithTitle:@"添加试剂保存位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [subscriber sendNext:@(YES)];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [subscriber sendNext:@(NO)];
+        }];
+        [remarkAlerVC addAction:saveReagentAction];
+        [remarkAlerVC addAction:cancelAction];
+        [self.navigationController presentViewController:remarkAlerVC animated:YES completion:^{
+        }];
+        return nil;
+    }];
 }
 @end
