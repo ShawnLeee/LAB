@@ -21,12 +21,11 @@
 #import "ExperimentTool.h"
 #import "SXQExperimentStepResult.h"
 #import "SXQExperiment.h"
-#import "TimeRecorder.h"
 #import "SXQExpStep.h"
 #import "SXQCurrentExperimentData.h"
 #import "SXQExperimentModel.h"
 
-@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,TimeRecorderDelegate>
+@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic,strong) SXQCurrentExperimentData *currentExperimentData;
 @property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
 
@@ -38,7 +37,6 @@
  *  正在进行的实验步骤
  */
 @property (nonatomic,strong) SXQExpStep *currentStep;
-@property (nonatomic,weak) TimeRecorder *timer;
 @end
 
 @implementation SXQCurrentExperimentController
@@ -110,29 +108,6 @@
 {
     _experimentName.text = _experimentModel.experimentName;
     self.navigationItem.title = @"实验步骤说明";
-    self.navigationItem.leftBarButtonItem = [self leftBarButton];
-}
-- (UIBarButtonItem *)leftBarButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
-    button.frame = CGRectMake(0, 0, 40, 30);
-    [button setTitle:@"返回" forState:UIControlStateNormal];
-    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        if(_timer)
-        {
-            [self closeTimer:^(BOOL cancelTimer) {
-                if (cancelTimer) {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            }];    
-        }else
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    }];
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 - (void)experimentToolBar:(SXQExperimentToolBar *)toolBar clickButtonWithType:(ExperimentTooBarButtonType)buttonType
 {
@@ -151,9 +126,6 @@
                     [MBProgressHUD showError:@"请选择实验步骤"];
                 }else
                 {
-                    TimeRecorder *recorder = [TimeRecorder showTimer];
-                    recorder.delegate = self;
-                    _timer = recorder;    
                 }
                 
                 break;
@@ -168,75 +140,18 @@
             break;
     }
 }
-#pragma mark timer delegate method 
-- (void)timeRecorderdidCancel:(TimeRecorder *)timeRecorder
-{
-    [self closeTimer:nil];
-}
-- (void)closeTimer:(void (^)(BOOL cancelTimer))completion
-{
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"关闭计时器" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [UIView animateWithDuration:0.5 animations:^{
-                _timer.alpha = 0;
-            } completion:^(BOOL finished) {
-                [_timer removeFromSuperview];
-                if(completion)
-                {
-                    completion(YES);
-                }
-            }];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            if(completion)
-            {
-                completion(NO);
-            }
-        }];
-        [alertVC addAction:action];
-        [alertVC addAction:cancelAction];
-        [self presentViewController:alertVC animated:YES completion:^{
-            
-        }];
-}
-- (void)timeRecorderdidPaused:(TimeRecorder *)timeRecorder
-{
-    if (self.currentStep) {
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"暂停在此步骤" message:self.currentStep.expStepDesc preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self addRemarkWithConfirm];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [_timer startTimer];
-        }];
-        [alertVC addAction:action];
-        [alertVC addAction:cancelAction];
-        [self presentViewController:alertVC animated:YES completion:^{
-        }];    
-    }
-    
-}
+
 - (void)addRemarkWithConfirm
 {
     UIAlertController *remarkAlerVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *saveReagentAction = [UIAlertAction actionWithTitle:@"添加试剂保存位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        _timer.hidden = YES;
-        __block TimeRecorder *timer = _timer;
         SXQSaveReagentController *reagentVC = [[SXQSaveReagentController alloc] initWithExperimentStep:self.currentStep completion:^{
-            timer.hidden = NO;
 #warning Save current step reagent place
             SXQExperimentStep *step = self.currentStep;
         }];
         SXQNavgationController *nav =  [[SXQNavgationController alloc] initWithRootViewController:reagentVC];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     }];
-//    UIAlertAction *addRemarkAction = [UIAlertAction actionWithTitle:@"添加备注" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        _timer.hidden = YES;
-//        __block TimeRecorder *timer = _timer;
-//        [self addRemark:^{
-//            timer.hidden = NO;
-//        }];
-//    }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
     [remarkAlerVC addAction:saveReagentAction];
@@ -246,10 +161,7 @@
         
     }];
 }
-- (void)timeRecorder:(TimeRecorder *)timeRecorder finishedTimerWithTime:(NSTimeInterval)countTime
-{
-    
-}
+
 #pragma mark - 图片选择控制器的代理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

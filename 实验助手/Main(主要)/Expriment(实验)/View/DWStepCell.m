@@ -64,6 +64,7 @@ static const CGFloat yPadding =8;
     
     UILabel *timeLabel = [[UILabel alloc] init];
     timeLabel.textColor = [UIColor blackColor];
+    timeLabel.textAlignment = NSTextAlignmentRight;
     timeLabel.text = @"00:00:00";
     _timeLabel = timeLabel;
     [self.contentView addSubview:timeLabel];

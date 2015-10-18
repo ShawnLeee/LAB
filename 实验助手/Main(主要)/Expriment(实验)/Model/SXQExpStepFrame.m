@@ -70,7 +70,7 @@ static const CGFloat kStepNumWidth = 60;
             timeLabelY = MAX(CGRectGetMaxY(_stepNumFrame),CGRectGetMaxY(_stepDescFrame)) + padding;
         }
     }
-    _timeLabelFrame = CGRectMake(kCellPadding, timeLabelY, stepDescW, 30);
+    _timeLabelFrame = CGRectMake(kCellPadding, timeLabelY, cellWidth - 4 * kCellPadding, 30);
     _cellHeight = CGRectGetMaxY(_timeLabelFrame) + kViewPadding;
     
 }
