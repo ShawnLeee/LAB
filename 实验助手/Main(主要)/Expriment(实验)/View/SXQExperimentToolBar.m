@@ -5,8 +5,10 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SXQColor.h"
 #import "SXQExperimentToolBar.h"
+#import "SXQExpStep.h"
 @interface SXQExperimentToolBar ()
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
@@ -36,6 +38,19 @@
         [self p_setupButtons];
     }
     return self;
+}
+- (void)setCurrentStep:(SXQExpStep *)currentStep
+{
+    _currentStep = currentStep;
+    [RACObserve(currentStep, isUserTimer)
+    subscribeNext:^(NSNumber *isUsing) {
+        if ([isUsing boolValue]) {
+            [_starBtn setTitle:@"暂停" forState:UIControlStateNormal];
+        }else
+        {
+            [_starBtn setTitle:@"启动" forState:UIControlStateNormal];
+        }
+    }];
 }
 - (void)updateConstraints
 {

@@ -103,9 +103,11 @@ static const CGFloat yPadding =8;
      subscribeNext:^(NSNumber *isUseTimer) {
          if ([isUseTimer boolValue]) {
              [_mzLabel start];
+             _timeLabel.textColor = [UIColor redColor];
          }else
          {
              [_mzLabel pause];
+             _timeLabel.textColor = [UIColor blackColor];
          }
     }];
 }

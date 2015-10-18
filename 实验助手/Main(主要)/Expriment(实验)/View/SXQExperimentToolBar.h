@@ -5,6 +5,7 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+@class SXQExpStep;
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSUInteger, ExperimentTooBarButtonType)
 {
@@ -22,5 +23,6 @@ typedef NS_ENUM(NSUInteger, ExperimentTooBarButtonType)
 
 @interface SXQExperimentToolBar : UIView
 @property (weak, nonatomic) IBOutlet UIButton *starBtn;
+@property (nonatomic,strong) SXQExpStep *currentStep;
 @property (nonatomic,weak) id<SXQExperimentToolBarDelegate> delegate;
 @end

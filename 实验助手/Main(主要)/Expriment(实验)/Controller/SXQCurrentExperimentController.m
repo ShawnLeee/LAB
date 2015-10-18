@@ -54,17 +54,6 @@
 {
     [self.tableView reloadData];
 }
-- (SXQExpStep *)currentStep
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    if (indexPath) {
-        _currentStep = _currentExperimentData.expProcesses[indexPath.row];
-        return _currentStep;
-    }else
-    {
-        return nil;
-    }
-}
 - (void)viewDidLayoutSubviews
 {
     [_toolBar setNeedsUpdateConstraints];
@@ -352,6 +341,10 @@
 }
 - (void)binding
 {
+    [RACObserve(self, currentStep)
+     subscribeNext:^(SXQExpStep *step) {
+         _toolBar.currentStep = _currentStep;
+     }];
     @weakify(self)
    [[[[[[[[[[_toolBar.starBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
        flattenMap:^RACStream *(id value) {
@@ -367,6 +360,12 @@
     }]
       
       filter:^BOOL(NSNumber *isTiming) {
+          if (![isTiming boolValue]) {//没有在计时，开启计时器
+              self.currentStep.isUserTimer = YES;
+          }else
+          {//正在计时，暂停计时器
+              self.currentStep.isUserTimer = NO;
+          }
          return [isTiming boolValue];
      }]
       flattenMap:^RACStream *(id value) {
@@ -374,6 +373,12 @@
          return [self suspendTimerSignal];
      }]
       filter:^BOOL(NSNumber *isSuspend) {
+          if ([isSuspend boolValue]) {//确定暂停计时器
+              self.currentStep.isUserTimer = NO;
+          }else
+          {
+              self.currentStep.isUserTimer = YES;
+          }
          return [isSuspend boolValue];
      }]
     flattenMap:^RACStream *(id value) {
@@ -390,7 +395,6 @@
 }
 - (void)addReagentLocation
 {
-    self.currentStep.isUserTimer = 0;
     NSLog(@"试剂已保存");
 }
 - (RACSignal *)isChoosingSignal
@@ -412,14 +416,6 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [subscriber sendNext:@(step.isUserTimer)];
         [subscriber sendCompleted];
-        if (step.isUserTimer) {
-            //询问是否暂停计时器，添加试剂保存位置
-        }else
-        {
-            //开启计时器
-            step.isUserTimer = YES;
-            NSLog(@"开启计时器！！！！");
-        }
         return nil;
     }];
 }
@@ -456,5 +452,9 @@
         }];
         return nil;
     }];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.currentStep = _currentExperimentData.expProcesses[indexPath.row];
 }
 @end
