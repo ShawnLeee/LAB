@@ -48,6 +48,7 @@ static const CGFloat kStepNumWidth = 60;
         
     }
     CGFloat padding = 8;
+    CGFloat timeLabelY = 0;
     if (expStep.images.count) {
         CGSize photoSize = [PhotoContainer photosViewSizeWithPhotosCount:expStep.images.count];
         CGFloat photoX = stepNumXY;
@@ -59,16 +60,18 @@ static const CGFloat kStepNumWidth = 60;
             photoY = CGRectGetMaxY(_stepDescFrame) + kViewPadding;
         }
         _photosFrame = CGRectMake(photoX, photoY, photoSize.width, photoSize.height);
-        _cellHeight = CGRectGetMaxY(_photosFrame)+ kViewPadding;
+        timeLabelY = CGRectGetMaxY(_photosFrame)+ kViewPadding;
     }else
     {
         if (expStep.processMemo.length) {
-            _cellHeight = MAX(CGRectGetMaxY(_remarkFrame),CGRectGetMaxY(_remarkContentFrame)) + padding *2;
+            timeLabelY = MAX(CGRectGetMaxY(_remarkFrame),CGRectGetMaxY(_remarkContentFrame)) + padding *2;
         }else
         {
-            _cellHeight = MAX(CGRectGetMaxY(_stepNumFrame),CGRectGetMaxY(_stepDescFrame)) + padding;
+            timeLabelY = MAX(CGRectGetMaxY(_stepNumFrame),CGRectGetMaxY(_stepDescFrame)) + padding;
         }
     }
+    _timeLabelFrame = CGRectMake(kCellPadding, timeLabelY, stepDescW, 30);
+    _cellHeight = CGRectGetMaxY(_timeLabelFrame) + kViewPadding;
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -22,12 +22,14 @@
             <subviews>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpx-GN-a9i">
                     <rect key="frame" x="211" y="114" width="67" height="29"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-tb-ONd">
                     <rect key="frame" x="0.0" y="0.0" width="489" height="216"/>
+                    <animations/>
                     <date key="date" timeIntervalSinceReferenceDate="465122605.67542398">
                         <!--2015-09-28 08:43:25 +0000-->
                     </date>
@@ -37,6 +39,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-5x-M1B" userLabel="启动">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+                            <animations/>
                             <state key="normal" title="开始计时">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -46,6 +49,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaM-zu-6dR" userLabel="暂停">
                             <rect key="frame" x="70" y="0.0" width="30" height="30"/>
+                            <animations/>
                             <state key="normal" title="暂停">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -55,6 +59,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdX-bU-zMp">
                             <rect key="frame" x="110" y="0.0" width="30" height="30"/>
+                            <animations/>
                             <state key="normal" title="继续"/>
                             <connections>
                                 <action selector="continueTimer" destination="-1" eventType="touchUpInside" id="RA6-Dp-VZ0"/>
@@ -62,14 +67,17 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-td-Ilg">
                             <rect key="frame" x="150" y="0.0" width="60" height="30"/>
+                            <animations/>
                             <state key="normal" title="取消计时"/>
                             <connections>
                                 <action selector="cancelTimer" destination="-1" eventType="touchUpInside" id="Tut-7U-Ix7"/>
                             </connections>
                         </button>
                     </subviews>
+                    <animations/>
                 </stackView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8ir-tb-ONd" secondAttribute="trailing" id="3S3-rP-Xd5"/>

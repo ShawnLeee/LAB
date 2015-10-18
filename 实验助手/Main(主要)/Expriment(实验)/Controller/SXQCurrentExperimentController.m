@@ -93,7 +93,7 @@
              stepFrame.expStep = step;
              [tmp addObject:stepFrame];
          }];
-         _stepsDataSource.items = [tmp copy];
+         _stepsDataSource.items = tmp;
         [self.tableView reloadData];
     }];
     [self p_setupTableFooter];
@@ -390,6 +390,7 @@
 }
 - (void)addReagentLocation
 {
+    self.currentStep.isUserTimer = 0;
     NSLog(@"试剂已保存");
 }
 - (RACSignal *)isChoosingSignal

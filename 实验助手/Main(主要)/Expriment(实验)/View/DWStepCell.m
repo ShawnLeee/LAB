@@ -5,7 +5,8 @@
 //  Created by sxq on 15/9/25.
 //  Copyright © 2015年 SXQ. All rights reserved.
 //
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "MZTimerLabel.h"
 #import "DWStepCell.h"
 #import "PhotoContainer.h"
 #import "SXQExpStep.h"
@@ -20,6 +21,8 @@ static const CGFloat yPadding =8;
 @property (nonatomic,weak) UILabel *stepRemarkLabel;
 @property (nonatomic,weak) UILabel *stepRemarkContentLabel;
 @property (nonatomic,weak) PhotoContainer *photoView;
+@property (nonatomic,weak) UILabel *timeLabel;
+@property (nonatomic,strong) MZTimerLabel *mzLabel;
 @end
 @implementation DWStepCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -58,12 +61,22 @@ static const CGFloat yPadding =8;
     PhotoContainer *photoView = [[PhotoContainer alloc] init];
     [self.contentView addSubview:photoView];
     _photoView = photoView;
+    
+    UILabel *timeLabel = [[UILabel alloc] init];
+    timeLabel.textColor = [UIColor blackColor];
+    timeLabel.text = @"00:00:00";
+    _timeLabel = timeLabel;
+    [self.contentView addSubview:timeLabel];
+    
+    _mzLabel = [[MZTimerLabel alloc] initWithLabel:_timeLabel andTimerType:MZTimerLabelTypeTimer];
+//    [_mzLabel start];
 }
 - (void)setStepFrame:(SXQExpStepFrame *)stepFrame
 {
     _stepFrame = stepFrame;
     SXQExpStep *expProcess = stepFrame.expStep;
     
+    [self bindingTimer];
     _photoView.myImages = expProcess.images;
     if (expProcess.processMemo.length) {
         _stepRemarkLabel.hidden = NO;
@@ -78,6 +91,23 @@ static const CGFloat yPadding =8;
     [self.stepFrame.expStep addObserver:self forKeyPath:@"processMemo" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     [self.stepFrame.expStep addObserver:self forKeyPath:@"images" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld  context:nil];
+}
+- (void)bindingTimer
+{
+    SXQExpStep *expstep = self.stepFrame.expStep;
+    _mzLabel.delegate = expstep;
+    
+    NSTimeInterval time = [expstep.expStepTime doubleValue] * 60;
+    [_mzLabel setCountDownTime:time];
+    [RACObserve(expstep, isUserTimer)
+     subscribeNext:^(NSNumber *isUseTimer) {
+         if ([isUseTimer boolValue]) {
+             [_mzLabel start];
+         }else
+         {
+             [_mzLabel pause];
+         }
+    }];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -98,6 +128,7 @@ static const CGFloat yPadding =8;
     _stepRemarkLabel.frame = _stepFrame.remarkFrame;
     _stepRemarkContentLabel.frame = _stepFrame.remarkContentFrame;
     _photoView.frame = _stepFrame.photosFrame;
+    _timeLabel.frame = _stepFrame.timeLabelFrame;
 }
 - (void)setFrame:(CGRect)frame
 {

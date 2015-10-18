@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
-@interface SXQExpStep : NSObject
+#import "MZTimerLabel.h"
+@interface SXQExpStep : NSObject <MZTimerLabelDelegate>
 @property (nonatomic,copy) NSString  *expInstructionID;
 @property (nonatomic,copy) NSString  *expStepDesc;
 @property (nonatomic,copy) NSString  *expStepID;

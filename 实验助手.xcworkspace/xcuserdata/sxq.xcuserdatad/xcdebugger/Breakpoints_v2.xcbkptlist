@@ -106,29 +106,13 @@
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Expand(&#x62d3;&#x5c55;)/Tool/SXQDBManager.m"
-            timestampString = "466769798.97225"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
-            landmarkName = "-myExpExist:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Main(&#x4e3b;&#x8981;)/Expriment(&#x5b9e;&#x9a8c;)/View/DWStepCell.m"
-            timestampString = "466771067.409925"
+            timestampString = "466822516.771195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-setupSelf"
             landmarkType = "5">
             <Actions>
@@ -148,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Main(&#x4e3b;&#x8981;)/Expriment(&#x5b9e;&#x9a8c;)/View/DWStepCell.m"
-            timestampString = "466771067.409925"
+            timestampString = "466823139.413019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-layoutSubviews"
             landmarkType = "5">
             <Actions>
@@ -172,11 +156,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Main(&#x4e3b;&#x8981;)/Expriment(&#x5b9e;&#x9a8c;)/View/DWStepCell.m"
-            timestampString = "466771067.409925"
+            timestampString = "466823139.413019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "5">
          </BreakpointContent>
@@ -188,11 +172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;/Main(&#x4e3b;&#x8981;)/Expriment(&#x5b9e;&#x9a8c;)/View/DWStepCell.m"
-            timestampString = "466771067.409925"
+            timestampString = "466823139.413019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-setStepFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -209,7 +193,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "-setupDatabase"
+            landmarkName = "-setupDataBase"
             landmarkType = "5">
             <Actions>
                <BreakpointActionProxy

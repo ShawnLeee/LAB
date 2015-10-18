@@ -15,5 +15,6 @@
 @property (nonatomic,assign) CGRect remarkFrame;
 @property (nonatomic,assign) CGRect remarkContentFrame;
 @property (nonatomic,assign) CGRect photosFrame;
+@property (nonatomic,assign) CGRect timeLabelFrame;
 @property (nonatomic,assign) CGFloat cellHeight;
 @end
