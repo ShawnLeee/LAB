@@ -17,9 +17,17 @@
 @interface SXQNowExperimentController ()
 @property (nonatomic,strong) ArrayDataSource *nowDataSource;
 @property (nonatomic,strong) NSArray *experiments;
+@property (nonatomic,strong) NSMutableArray *cacheVC;
 @end
 
 @implementation SXQNowExperimentController
+- (NSMutableArray *)cacheVC
+{
+    if (_cacheVC == nil) {
+        _cacheVC = [NSMutableArray array];
+    }
+    return _cacheVC;
+}
 - (NSArray *)experiments
 {
     if (!_experiments) {
@@ -57,9 +65,26 @@
 #pragma mark - TableView Delegate Method
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     SXQExperimentModel *experiment = self.experiments[indexPath.row];
+    UIViewController *cacheVc = [self cachedVcWithExperimentModel:experiment];
+    if (cacheVc) {
+        [self.navigationController pushViewController:cacheVc animated:YES];
+        return;
+    }
     SXQCurrentExperimentController *stepVC = [[SXQCurrentExperimentController alloc] initWithExperimentModel:experiment];
     [self.navigationController pushViewController:stepVC animated:YES];
+    [self.cacheVC addObject:stepVC];
 }
-
+- (UIViewController *)cachedVcWithExperimentModel:(SXQExperimentModel *)experiment
+{
+    __block UIViewController *vc = nil;
+    [self.cacheVC enumerateObjectsUsingBlock:^(SXQCurrentExperimentController *currentVc, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([currentVc.experimentModel.myExpID isEqualToString:experiment.myExpID]) {
+            vc = currentVc;
+            *stop = YES;
+        }
+    }];
+    return vc;
+}
 @end

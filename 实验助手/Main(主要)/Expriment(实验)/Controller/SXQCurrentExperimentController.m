@@ -5,6 +5,7 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import "FPPopoverController.h"
 #import "RACEXTScope.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SXQExpStepFrame.h"
@@ -22,24 +23,47 @@
 #import "SXQExperimentStepResult.h"
 #import "SXQExperiment.h"
 #import "SXQExpStep.h"
-#import "SXQCurrentExperimentData.h"
 #import "SXQExperimentModel.h"
-
-@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
-@property (nonatomic,strong) SXQCurrentExperimentData *currentExperimentData;
-@property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
+#import "SXQDBManager.h"
+#import "SXQCurrentExperimentData.h"
+@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate> @property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *experimentName;
-@property (nonatomic,strong) SXQExperimentModel *experimentModel;
 @property (nonatomic,strong) ArrayDataSource *stepsDataSource;
 /**
  *  正在进行的实验步骤
  */
 @property (nonatomic,strong) SXQExpStep *currentStep;
+@property (nonatomic,weak) FPPopoverController *popOver;
+@property (nonatomic,strong) NSArray *expStepFrames;
 @end
 
 @implementation SXQCurrentExperimentController
+- (NSArray *)expStepFrames
+{
+    if (_expStepFrames == nil) {
+        [[SXQDBManager sharedManager] loadCurrentDataWithMyExpId:self.experimentModel.myExpID completion:^(SXQCurrentExperimentData *currentExprimentData) {
+            NSMutableArray *tmp = [NSMutableArray array];
+            [currentExprimentData.expProcesses enumerateObjectsUsingBlock:^(SXQExpStep *step, NSUInteger idx, BOOL * _Nonnull stop) {
+             SXQExpStepFrame *stepFrame = [[SXQExpStepFrame alloc] init];
+             stepFrame.expStep = step;
+             [tmp addObject:stepFrame];
+            }];
+            _expStepFrames = [tmp copy];
+            tmp = nil;
+        }];
+    }
+    return _expStepFrames;
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 - (instancetype)initWithExperimentModel:(SXQExperimentModel *)experimentModel
 {
     if (self = [super init]) {
@@ -47,6 +71,10 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:@"needreloadCell" object:nil];
     }
     return self;
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)test:(NSNotification *)notifation
 {
@@ -60,7 +88,6 @@
     [super viewDidLoad];
     [self p_setupSelf];
     [self p_setupTableView];
-    
 }
 - (void)p_setupTableView
 {
@@ -68,28 +95,17 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"DWStepCell" bundle:nil] forCellReuseIdentifier:@"DWStepCell"];
     [self.tableView registerClass:[DWStepCell class] forCellReuseIdentifier:@"cell"];
-    _stepsDataSource = [[ArrayDataSource alloc] initWithItems:@[] cellIdentifier:@"cell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStepFrame *stepFrame) {
+    _stepsDataSource = [[ArrayDataSource alloc] initWithItems:self.expStepFrames cellIdentifier:@"cell" cellConfigureBlock:^(DWStepCell *cell, SXQExpStepFrame *stepFrame) {
         cell.stepFrame = stepFrame;
     }];
     self.tableView.dataSource = _stepsDataSource;
-    
-     _currentExperimentData = [[SXQCurrentExperimentData alloc] initWithMyExpId:_experimentModel.myExpID completion:^(BOOL success) {
-         NSMutableArray *tmp = [NSMutableArray array];
-         [_currentExperimentData.expProcesses enumerateObjectsUsingBlock:^(SXQExpStep *step, NSUInteger idx, BOOL * _Nonnull stop) {
-             SXQExpStepFrame *stepFrame = [[SXQExpStepFrame alloc] init];
-             stepFrame.expStep = step;
-             [tmp addObject:stepFrame];
-         }];
-         _stepsDataSource.items = tmp;
-        [self.tableView reloadData];
-    }];
     [self p_setupTableFooter];
 }
 
 - (void)p_setupTableFooter
 {
     SXQExperimentToolBar *toolBar = [[SXQExperimentToolBar alloc] init];
-//    toolBar.delegate = self;
+    toolBar.delegate = self;
     [self.view addSubview:toolBar];
     _toolBar = toolBar;
     toolBar.translatesAutoresizingMaskIntoConstraints = NO;
@@ -120,16 +136,7 @@
             break;
             
             case ExperimentTooBarButtonTypeStart:
-            {//启动/暂停定时器
-                if(!self.currentStep)
-                {
-                    [MBProgressHUD showError:@"请选择实验步骤"];
-                }else
-                {
-                }
-                
                 break;
-            }
             case ExperimentTooBarButtonTypeRemark:
             {
                 [self addRemark:nil];
@@ -141,26 +148,7 @@
     }
 }
 
-- (void)addRemarkWithConfirm
-{
-    UIAlertController *remarkAlerVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *saveReagentAction = [UIAlertAction actionWithTitle:@"添加试剂保存位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        SXQSaveReagentController *reagentVC = [[SXQSaveReagentController alloc] initWithExperimentStep:self.currentStep completion:^{
-#warning Save current step reagent place
-            SXQExperimentStep *step = self.currentStep;
-        }];
-        SXQNavgationController *nav =  [[SXQNavgationController alloc] initWithRootViewController:reagentVC];
-        [self.navigationController presentViewController:nav animated:YES completion:nil];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [remarkAlerVC addAction:saveReagentAction];
-//    [remarkAlerVC addAction:addRemarkAction];
-    [remarkAlerVC addAction:cancelAction];
-    [self.navigationController presentViewController:remarkAlerVC animated:YES completion:^{
-        
-    }];
-}
+
 
 #pragma mark - 图片选择控制器的代理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -229,7 +217,8 @@
     SXQExpStep *step = nil;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     if (indexPath) {
-        step = _currentExperimentData.expProcesses[indexPath.row];
+        SXQExpStepFrame *stepFrame = self.expStepFrames[indexPath.row];
+        step = stepFrame.expStep;
     }else
     {
         [MBProgressHUD showError:@"请选择实验步骤"];
@@ -307,7 +296,13 @@
 }
 - (void)addReagentLocation
 {
-    NSLog(@"试剂已保存");
+    [self showPopoverWithItem:self.currentStep sender:_toolBar.starBtn];
+}
+- (void)showPopoverWithItem:(SXQExpStep *)step sender:(UIButton *)sender
+{
+    SXQSaveReagentController *saveReagentVC = [[SXQSaveReagentController alloc] init];
+    SXQNavgationController *nav = [[SXQNavgationController alloc] initWithRootViewController:saveReagentVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 - (RACSignal *)isChoosingSignal
 {
@@ -367,6 +362,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.currentStep = _currentExperimentData.expProcesses[indexPath.row];
+    
+    SXQExpStepFrame *stepFrame = self.expStepFrames[indexPath.row];
+    self.currentStep = stepFrame.expStep;
 }
 @end

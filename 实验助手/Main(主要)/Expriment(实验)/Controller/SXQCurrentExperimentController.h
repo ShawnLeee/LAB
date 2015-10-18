@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SXQCurrentExperimentController : UIViewController
+@property (nonatomic,strong) SXQExperimentModel *experimentModel;
 - (instancetype)initWithExperimentModel:(SXQExperimentModel *)experimentModel;
 @end

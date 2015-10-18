@@ -163,6 +163,38 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SXQDBManager setupDataBase]"
+                  moduleName = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sxq/XcodeProjects/LAB/%E5%AE%9E%E9%AA%8C%E5%8A%A9%E6%89%8B/Expand(%E6%8B%93%E5%B1%95)/Tool/SXQDBManager.m"
+                  timestampString = "466858563.423783"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[SXQDBManager setupDataBase]_block_invoke"
+                  moduleName = "&#x5b9e;&#x9a8c;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sxq/XcodeProjects/LAB/%E5%AE%9E%E9%AA%8C%E5%8A%A9%E6%89%8B/Expand(%E6%8B%93%E5%B1%95)/Tool/SXQDBManager.m"
+                  timestampString = "466858563.423937"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
