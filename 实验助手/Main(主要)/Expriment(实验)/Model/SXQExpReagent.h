@@ -33,4 +33,8 @@
  *  供应商
  */
 @property (nonatomic,strong) SXQSupplier *finalSupplier;
+/**
+ *  试剂总量
+ */
+@property (nonatomic,assign) double totalCount;
 @end

@@ -34,6 +34,7 @@
 @property (nonatomic,weak) FPPopoverController *popOver;
 @property (nonatomic,strong) SXQInstructionData *instructionData;
 @property (nonatomic,strong) ArrayDataSource *supplierDataSource;
+@property (nonatomic,weak) UIViewController *addVC;
 @end
 
 @implementation SXQReagentListController
@@ -105,9 +106,17 @@
 #pragma mark setupNav
 - (void)setupNav
 {
+    __block __weak typeof(self) weakSelf = self;
     UIBarButtonItem *rightBarButton = [UIBarButtonItem itemWithTitle:@"下一步" action:^{
-        SXQAddExpController *addExpController = [[SXQAddExpController alloc] initWithInstructionData:_instructionData];
-        [self.navigationController pushViewController:addExpController animated:YES];
+        if (weakSelf.addVC) {
+            [weakSelf.navigationController pushViewController:_addVC animated:YES];
+        }else
+        {
+            SXQAddExpController *addExpController = [[SXQAddExpController alloc] initWithInstructionData:_instructionData];
+            weakSelf.addVC = addExpController;
+            [weakSelf.navigationController pushViewController:addExpController animated:YES];
+        }
+        
     }];
     self.navigationItem.rightBarButtonItem = rightBarButton;
 }

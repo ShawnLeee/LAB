@@ -11,8 +11,14 @@
 #import "SXQMyExperimentManager.h"
 #import "SXQInstructionData.h"
 #import "MBProgressHUD+MJ.h"
+#import "SXQExpReagent.h"
+#import "SXQReagentCountView.h"
+#define countWidth ([UIScreen mainScreen].bounds.size.width - 20)
+#define countHeight 40
 @interface SXQAddExpController ()
 @property (nonatomic,strong) SXQInstructionData *instructionData;
+@property (nonatomic,weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic,weak) IBOutlet NSLayoutConstraint *widthConstans;
 @end
 
 @implementation SXQAddExpController
@@ -25,8 +31,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     [self setupNav];
+    [self setUpCountView];
 }
 - (void)setupNav{
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"确认" action:^{
@@ -46,7 +52,23 @@
         }];
     }];
 }
-
-
+- (void)setUpCountView
+{
+    CGFloat countX = 10;
+    __block CGFloat countY = 0;
+    [_instructionData.expReagent enumerateObjectsUsingBlock:^(SXQExpReagent *reagent, NSUInteger idx, BOOL * _Nonnull stop) {
+        SXQReagentCountView *countView = [[SXQReagentCountView alloc] init];
+        countView.reagent = reagent;
+        countY = idx * (8 + countHeight);
+        countView.frame = CGRectMake(countX, countY, countWidth, countHeight);
+        [self.scrollView addSubview:countView];
+        self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(countView.frame) + 20) ;
+    }];
+}
+- (void)viewDidLayoutSubviews
+{
+    self.widthConstans.constant = ([UIScreen mainScreen].bounds.size.width - 20)/5.0;
+    [self.view layoutIfNeeded];
+}
 
 @end
