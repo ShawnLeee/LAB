@@ -20,6 +20,8 @@
 		B0026BFD1BCF8D6500FB70A9 /* SXQReagent.m in Sources */ = {isa = PBXBuildFile; fileRef = B0026BFC1BCF8D6500FB70A9 /* SXQReagent.m */; settings = {ASSET_TAGS = (); }; };
 		B0205C491BB9291800DE6E33 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = B0205C481BB9291800DE6E33 /* UIImage+Size.m */; settings = {ASSET_TAGS = (); }; };
 		B02943401BD48A2B00736364 /* SXQReagentCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = B029433F1BD48A2B00736364 /* SXQReagentCountView.m */; settings = {ASSET_TAGS = (); }; };
+		B02943461BD4E9E100736364 /* DWSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = B02943441BD4E9E100736364 /* DWSignUpController.m */; settings = {ASSET_TAGS = (); }; };
+		B02943471BD4E9E100736364 /* DWSignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02943451BD4E9E100736364 /* DWSignUpController.xib */; settings = {ASSET_TAGS = (); }; };
 		B03F97B61BA299F8009FD1B4 /* SXQLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F97B41BA299F8009FD1B4 /* SXQLoginViewController.m */; };
 		B03F97B71BA299F8009FD1B4 /* SXQLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03F97B51BA299F8009FD1B4 /* SXQLoginViewController.xib */; };
 		B03F97BA1BA2A052009FD1B4 /* SXQLoginField.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F97B91BA2A052009FD1B4 /* SXQLoginField.m */; };
@@ -250,6 +252,9 @@
 		B0205C481BB9291800DE6E33 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		B029433E1BD48A2B00736364 /* SXQReagentCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQReagentCountView.h; sourceTree = "<group>"; };
 		B029433F1BD48A2B00736364 /* SXQReagentCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQReagentCountView.m; sourceTree = "<group>"; };
+		B02943431BD4E9E100736364 /* DWSignUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSignUpController.h; sourceTree = "<group>"; };
+		B02943441BD4E9E100736364 /* DWSignUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSignUpController.m; sourceTree = "<group>"; };
+		B02943451BD4E9E100736364 /* DWSignUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWSignUpController.xib; sourceTree = "<group>"; };
 		B03F97B31BA299F8009FD1B4 /* SXQLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginViewController.h; sourceTree = "<group>"; };
 		B03F97B41BA299F8009FD1B4 /* SXQLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginViewController.m; sourceTree = "<group>"; };
 		B03F97B51BA299F8009FD1B4 /* SXQLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXQLoginViewController.xib; sourceTree = "<group>"; };
@@ -1349,6 +1354,9 @@
 				B0F308BF1BC6530A00AD9EAF /* DWLoginViewController.h */,
 				B0F308C01BC6530A00AD9EAF /* DWLoginViewController.m */,
 				B0F308C11BC6530A00AD9EAF /* DWLoginViewController.xib */,
+				B02943431BD4E9E100736364 /* DWSignUpController.h */,
+				B02943441BD4E9E100736364 /* DWSignUpController.m */,
+				B02943451BD4E9E100736364 /* DWSignUpController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1641,6 +1649,7 @@
 				B0F939CB1BA166F900D093F9 /* WeiboSDK.bundle in Resources */,
 				B0DDFF191BA67FFE00E4AB3C /* SXQEquipMentCell.xib in Resources */,
 				B0F738BC1BA90F6500EA7E9E /* SXQMenuCell.xib in Resources */,
+				B02943471BD4E9E100736364 /* DWSignUpController.xib in Resources */,
 				B05CB4CB1BB3C58A0041845B /* mysql.sql in Resources */,
 				B0F4C7061BBA5714009B7B05 /* SXQSaveReagentController.xib in Resources */,
 				B0C73CB31B92F39E00F4B6D2 /* Images.xcassets in Resources */,
@@ -1767,6 +1776,7 @@
 				B0F5663A1BA807D900BA1F7B /* SXQCurrentExperimentController.m in Sources */,
 				B0DDFF131BA67F6500E4AB3C /* SXQExperimentStepCell.m in Sources */,
 				B0F738B11BA9011600EA7E9E /* UIView+MJ.m in Sources */,
+				B02943461BD4E9E100736364 /* DWSignUpController.m in Sources */,
 				B0F64BDF1BAF99EB001CF997 /* SXQExperiment.m in Sources */,
 				B06CE1681BAAB803008BB98E /* DWContainerViewController.m in Sources */,
 				B0F738C01BA9293200EA7E9E /* DWInstructionChildController.m in Sources */,

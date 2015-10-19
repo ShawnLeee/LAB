@@ -9,7 +9,9 @@
 #import "DWLoginViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "DWSignUpController.h"
 @interface DWLoginViewController ()
+
 @property (nonatomic,weak) IBOutlet UITextField  *userNameField;
 @property (nonatomic,weak) IBOutlet UITextField  *password;
 @property (nonatomic,weak) IBOutlet UIButton *remenberBtn;
@@ -23,6 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self bindingTextField];
+    [self bindingSignUp];
+}
+- (void)bindingSignUp
+{
+    @weakify(self)
+    [[_signupBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+        subscribeNext:^(id x) {
+            @strongify(self)
+            DWSignUpController *signUpVC = [[DWSignUpController alloc] init];
+            [self.navigationController pushViewController:signUpVC animated:YES];
+        }];
 }
 - (void)bindingTextField
 {
