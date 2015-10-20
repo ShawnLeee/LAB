@@ -12,8 +12,8 @@ typedef void (^CompletionBlock)(BOOL success);
 
 ////////////////////////////////////////LoginParam/////////////////////////////////////////////////////////////////
 @interface LoginParam : NSObject
-@property (nonatomic,copy,readonly) NSString *nickName;
-@property (nonatomic,copy,readonly) NSString *pwd;
+@property (nonatomic,copy) NSString *nickName;
+@property (nonatomic,copy) NSString *pwd;
 + (instancetype)paramWithNickName:(NSString *)nickName passwd:(NSString *)pwd;
 @end
 ////////////////////////////////////////LoginParam/////////////////////////////////////////////////////////////////
@@ -25,6 +25,7 @@ typedef void (^CompletionBlock)(BOOL success);
 
 ////////////////////////////////////////SignUpParam/////////////////////////////////////////////////////////////////
 @interface SignUpParam : LoginParam
+
 @property (nonatomic,copy) NSString *eMail;
 @property (nonatomic,copy) NSString *telNo;
 @property (nonatomic,copy) NSString *provinceID;

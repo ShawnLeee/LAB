@@ -9,7 +9,8 @@
 #import "DWLoginViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "DWSignUpController.h"
+#import "SXQNavgationController.h"
+#import "DWSignUpLogicController.h"
 @interface DWLoginViewController ()
 
 @property (nonatomic,weak) IBOutlet UITextField  *userNameField;
@@ -21,7 +22,6 @@
 @end
 
 @implementation DWLoginViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self bindingTextField];
@@ -33,8 +33,10 @@
     [[_signupBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
         subscribeNext:^(id x) {
             @strongify(self)
-            DWSignUpController *signUpVC = [[DWSignUpController alloc] init];
-            [self.navigationController pushViewController:signUpVC animated:YES];
+            DWSignUpLogicController *signUpVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DWSignUpController"];
+            SXQNavgationController *nav = [[SXQNavgationController alloc] initWithRootViewController:signUpVC];
+            
+            [self presentViewController:nav animated:YES completion:nil];
         }];
 }
 - (void)bindingTextField

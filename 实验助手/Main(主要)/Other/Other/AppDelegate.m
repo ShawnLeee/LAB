@@ -19,10 +19,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    [self.window makeKeyAndVisible];
-//    DWLoginViewController *loginvc = [DWLoginViewController new];
-//    self.window.rootViewController = loginvc;
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyAndVisible];
+    DWLoginViewController *loginvc = [DWLoginViewController new];
+    self.window.rootViewController = loginvc;
     [self initializeSDK:launchOptions];
     return YES;
 }

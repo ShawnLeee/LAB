@@ -17,7 +17,9 @@
 @implementation SignUpParam
 + (instancetype)paramWithNickName:(NSString *)nickName passwd:(NSString *)pwd email:(NSString *)email telNo:(NSString *)tel provinceID:(NSString *)provinceID cityID:(NSString *)cityID collegeID:(NSString *)collegeID labName:(NSString *)labName majorID:(NSString *)majorID educationID:(NSString *)educationID titleID:(NSString *)titleID nState:(NSString *)nState nSource:(NSString *)nSource
 {
-    SignUpParam *param = [super paramWithNickName:nickName passwd:pwd];
+    SignUpParam *param = [SignUpParam new];
+    param.nickName = nickName;
+    param.pwd = pwd;
     param.eMail = email;
     param.telNo = tel;
     param.provinceID = provinceID;
@@ -37,8 +39,6 @@
 
 ////////////////////////////////////////LoginParam/////////////////////////////////////////////////////////////////
 @interface LoginParam ()
-@property (nonatomic,copy,readwrite) NSString *nickName;
-@property (nonatomic,copy,readwrite) NSString *pwd;
 @end
 @implementation LoginParam
 + (instancetype)paramWithNickName:(NSString *)nickName passwd:(NSString *)pwd
@@ -57,7 +57,10 @@
 + (void)signUpWithParam:(SignUpParam *)param completion:(CompletionBlock)completion
 {
     [SXQHttpTool postWithURL:SignUpURL params:param.keyValues success:^(id json) {
-        
+        if (completion) {
+            BOOL success = [(NSString *)json[@"code"] isEqualToString:@"1"] ? YES : NO;
+            completion(success);
+        }
     } failure:^(NSError *error) {
         
     }];
