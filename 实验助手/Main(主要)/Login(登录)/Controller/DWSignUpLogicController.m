@@ -66,7 +66,10 @@
     
     RAC(self.confirmBtn,enabled) = compelValidSignal;
     
-    [[[self.confirmBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+    [[[[self.confirmBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+      doNext:^(id x) {
+          self.confirmBtn.enabled = NO;
+      }]
      flattenMap:^RACStream *(id value) {
         return [self signUpSignal];
     }]
@@ -77,6 +80,7 @@
         {
             [MBProgressHUD showError:@"注册失败!"];
         }
+        self.confirmBtn.enabled = YES;
     }];
 }
 - (RACSignal *)signUpSignal
