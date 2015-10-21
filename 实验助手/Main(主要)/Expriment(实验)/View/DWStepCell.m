@@ -98,18 +98,23 @@ static const CGFloat yPadding =8;
     SXQExpStep *expstep = self.stepFrame.expStep;
     _mzLabel.delegate = expstep;
     
-    NSTimeInterval time = [expstep.expStepTime doubleValue] * 60;
-    [_mzLabel setCountDownTime:time];
+    @weakify(self)
     [RACObserve(expstep, isUserTimer)
      subscribeNext:^(NSNumber *isUseTimer) {
+         @strongify(self)
          if ([isUseTimer boolValue]) {
-             [_mzLabel start];
+             [self.mzLabel start];
              _timeLabel.textColor = [UIColor redColor];
          }else
          {
              [_mzLabel pause];
              _timeLabel.textColor = [UIColor blackColor];
          }
+    }];
+    [RACObserve(expstep, expStepTime)
+    subscribeNext:^(NSString *time) {
+        @strongify(self)
+        [self.mzLabel setCountDownTime:[time doubleValue] * 60];
     }];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

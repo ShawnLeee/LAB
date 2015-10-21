@@ -5,6 +5,7 @@
 //  Created by sxq on 15/9/15.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
+#import "SXQCountTimeView.h"
 #import "FPPopoverController.h"
 #import "RACEXTScope.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -26,7 +27,8 @@
 #import "SXQExperimentModel.h"
 #import "SXQDBManager.h"
 #import "SXQCurrentExperimentData.h"
-@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate> @property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
+@interface SXQCurrentExperimentController ()<UITableViewDelegate,SXQExperimentToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,SXQCountTimeViewDelegate>
+@property (weak, nonatomic) IBOutlet SXQExperimentToolBar *toolBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *experimentName;
@@ -37,6 +39,7 @@
 @property (nonatomic,strong) SXQExpStep *currentStep;
 @property (nonatomic,weak) FPPopoverController *popOver;
 @property (nonatomic,strong) NSArray *expStepFrames;
+@property (nonatomic,strong) SXQCountTimeView *countView;
 @end
 
 @implementation SXQCurrentExperimentController
@@ -68,6 +71,10 @@
 {
     if (self = [super init]) {
         _experimentModel = experimentModel;
+        _countView = [[SXQCountTimeView alloc] init];
+        [[UIApplication sharedApplication].keyWindow addSubview:_countView];
+        _countView.hidden = YES;
+        _countView.delegate = self;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:@"needreloadCell" object:nil];
     }
     return self;
@@ -124,6 +131,33 @@
 {
     _experimentName.text = _experimentModel.experimentName;
     self.navigationItem.title = @"实验步骤说明";
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 75, 30);
+    [button setTitle:@"设置时间" forState:UIControlStateNormal];
+    
+    @weakify(self)
+    [[[button rac_signalForControlEvents:UIControlEventTouchUpInside]
+     flattenMap:^RACStream *(id value) {
+         return [self isChoosingSignal];
+     }]
+     subscribeNext:^(NSNumber *isChoosing) {
+        @strongify(self)
+         if ([isChoosing boolValue]) {
+             [self.countView show];
+         }
+    }];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    RACSignal *timeChooseSignal = [[self rac_signalForSelector:@selector(countTimeView:choosedTime:) fromProtocol:@protocol(SXQCountTimeViewDelegate)]
+                                   map:^id(RACTuple *touple) {
+                                       return touple.second;
+                                   }];
+    [timeChooseSignal subscribeNext:^(NSNumber *time) {
+        @strongify(self)
+        NSTimeInterval timeInteval = [time doubleValue];
+        _currentStep.expStepTime = [NSString stringWithFormat:@"%f",timeInteval/60];
+        [self.countView hide];
+    }];
 }
 - (void)experimentToolBar:(SXQExperimentToolBar *)toolBar clickButtonWithType:(ExperimentTooBarButtonType)buttonType
 {
@@ -242,6 +276,7 @@
 }
 - (void)binding
 {
+   
     [RACObserve(self, currentStep)
      subscribeNext:^(SXQExpStep *step) {
          _toolBar.currentStep = _currentStep;

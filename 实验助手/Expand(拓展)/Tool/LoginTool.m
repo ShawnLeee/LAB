@@ -71,7 +71,7 @@
         LoginResult *result = [LoginResult objectWithKeyValues:json];
         if (result.code == 1) {
             //保存账号
-            Account *acc = [Account objectWithKeyValues:json];
+            Account *acc = [Account objectWithKeyValues:json[@"data"]];
             [AccountTool saveAccount:acc];
             completion(YES);
         }

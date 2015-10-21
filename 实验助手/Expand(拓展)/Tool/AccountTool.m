@@ -12,7 +12,8 @@
 @implementation AccountTool
 + (BOOL)saveAccount:(Account *)account
 {
-    return [NSKeyedArchiver archiveRootObject:account toFile:IWAccountFile];
+    BOOL success = [NSKeyedArchiver archiveRootObject:account toFile:IWAccountFile];
+    return success;
 }
 + (Account *)account
 {

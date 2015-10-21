@@ -59,6 +59,25 @@
 		B0A1E51C1B95897200440141 /* SXQListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A1E51A1B95897200440141 /* SXQListCell.xib */; };
 		B0A270D01BD60E5900BA0C1B /* DWSignUpLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270CF1BD60E5900BA0C1B /* DWSignUpLogicController.m */; settings = {ASSET_TAGS = (); }; };
 		B0A270D31BD6147300BA0C1B /* NSString+Check.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270D21BD6147300BA0C1B /* NSString+Check.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270DD1BD7386200BA0C1B /* SXQScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270DC1BD7386200BA0C1B /* SXQScheduleController.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270F71BD73B5C00BA0C1B /* FSCalendar+IBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270E01BD73B5C00BA0C1B /* FSCalendar+IBExtension.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270F81BD73B5C00BA0C1B /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270E21BD73B5C00BA0C1B /* FSCalendar.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270F91BD73B5C00BA0C1B /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270E41BD73B5C00BA0C1B /* FSCalendarAppearance.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FA1BD73B5C00BA0C1B /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270E61BD73B5C00BA0C1B /* FSCalendarCell.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FB1BD73B5C00BA0C1B /* FSCalendarConstance.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270E81BD73B5C00BA0C1B /* FSCalendarConstance.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FC1BD73B5C00BA0C1B /* FSCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270EB1BD73B5C00BA0C1B /* FSCalendarHeader.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FD1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270ED1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FE1BD73B5C00BA0C1B /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270EF1BD73B5C00BA0C1B /* FSCalendarStickyHeader.m */; settings = {ASSET_TAGS = (); }; };
+		B0A270FF1BD73B5C00BA0C1B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A270F01BD73B5C00BA0C1B /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		B0A271001BD73B5C00BA0C1B /* NSDate+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270F21BD73B5C00BA0C1B /* NSDate+FSExtension.m */; settings = {ASSET_TAGS = (); }; };
+		B0A271011BD73B5C00BA0C1B /* NSString+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270F41BD73B5C00BA0C1B /* NSString+FSExtension.m */; settings = {ASSET_TAGS = (); }; };
+		B0A271021BD73B5C00BA0C1B /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A270F61BD73B5C00BA0C1B /* UIView+FSExtension.m */; settings = {ASSET_TAGS = (); }; };
+		B0A2710B1BD742D700BA0C1B /* SXQScheduleServicesImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2710A1BD742D700BA0C1B /* SXQScheduleServicesImpl.m */; settings = {ASSET_TAGS = (); }; };
+		B0A2710F1BD7462300BA0C1B /* SXQScheduleImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2710E1BD7462300BA0C1B /* SXQScheduleImpl.m */; settings = {ASSET_TAGS = (); }; };
+		B0A271121BD74DF900BA0C1B /* SXQBaseParam.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A271111BD74DF900BA0C1B /* SXQBaseParam.m */; settings = {ASSET_TAGS = (); }; };
+		B0A271151BD74E7D00BA0C1B /* SXQScheduleParam.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A271141BD74E7D00BA0C1B /* SXQScheduleParam.m */; settings = {ASSET_TAGS = (); }; };
+		B0A271181BD768B800BA0C1B /* SXQCountTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A271171BD768B800BA0C1B /* SXQCountTimeView.m */; settings = {ASSET_TAGS = (); }; };
+		B0A2711A1BD768C900BA0C1B /* SXQCountTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A271191BD768C900BA0C1B /* SXQCountTimeView.xib */; settings = {ASSET_TAGS = (); }; };
 		B0B1EC501BA27A870087A318 /* SXQVenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B1EC4F1BA27A870087A318 /* SXQVenderView.m */; };
 		B0B1EC521BA27A920087A318 /* SXQVenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B1EC511BA27A920087A318 /* SXQVenderView.xib */; };
 		B0C73CAF1B92F39E00F4B6D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C73C9E1B92F39E00F4B6D2 /* AppDelegate.m */; };
@@ -329,6 +348,47 @@
 		B0A270CF1BD60E5900BA0C1B /* DWSignUpLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSignUpLogicController.m; sourceTree = "<group>"; };
 		B0A270D11BD6147300BA0C1B /* NSString+Check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Check.h"; sourceTree = "<group>"; };
 		B0A270D21BD6147300BA0C1B /* NSString+Check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Check.m"; sourceTree = "<group>"; };
+		B0A270DB1BD7386200BA0C1B /* SXQScheduleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQScheduleController.h; sourceTree = "<group>"; };
+		B0A270DC1BD7386200BA0C1B /* SXQScheduleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQScheduleController.m; sourceTree = "<group>"; };
+		B0A270DF1BD73B5C00BA0C1B /* FSCalendar+IBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSCalendar+IBExtension.h"; sourceTree = "<group>"; };
+		B0A270E01BD73B5C00BA0C1B /* FSCalendar+IBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+IBExtension.m"; sourceTree = "<group>"; };
+		B0A270E11BD73B5C00BA0C1B /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		B0A270E21BD73B5C00BA0C1B /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		B0A270E31BD73B5C00BA0C1B /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		B0A270E41BD73B5C00BA0C1B /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		B0A270E51BD73B5C00BA0C1B /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		B0A270E61BD73B5C00BA0C1B /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		B0A270E71BD73B5C00BA0C1B /* FSCalendarConstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstance.h; sourceTree = "<group>"; };
+		B0A270E81BD73B5C00BA0C1B /* FSCalendarConstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstance.m; sourceTree = "<group>"; };
+		B0A270E91BD73B5C00BA0C1B /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		B0A270EA1BD73B5C00BA0C1B /* FSCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeader.h; sourceTree = "<group>"; };
+		B0A270EB1BD73B5C00BA0C1B /* FSCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeader.m; sourceTree = "<group>"; };
+		B0A270EC1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderTouchDeliver.h; sourceTree = "<group>"; };
+		B0A270ED1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderTouchDeliver.m; sourceTree = "<group>"; };
+		B0A270EE1BD73B5C00BA0C1B /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		B0A270EF1BD73B5C00BA0C1B /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		B0A270F01BD73B5C00BA0C1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0A270F11BD73B5C00BA0C1B /* NSDate+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FSExtension.h"; sourceTree = "<group>"; };
+		B0A270F21BD73B5C00BA0C1B /* NSDate+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FSExtension.m"; sourceTree = "<group>"; };
+		B0A270F31BD73B5C00BA0C1B /* NSString+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FSExtension.h"; sourceTree = "<group>"; };
+		B0A270F41BD73B5C00BA0C1B /* NSString+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FSExtension.m"; sourceTree = "<group>"; };
+		B0A270F51BD73B5C00BA0C1B /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
+		B0A270F61BD73B5C00BA0C1B /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
+		B0A271031BD73C3800BA0C1B /* FSCalendarSelectDateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarSelectDateTest.h; sourceTree = "<group>"; };
+		B0A271041BD73C3800BA0C1B /* FSCalendarTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTestMacros.h; sourceTree = "<group>"; };
+		B0A271081BD742A800BA0C1B /* SXQScheduleServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQScheduleServices.h; sourceTree = "<group>"; };
+		B0A271091BD742D700BA0C1B /* SXQScheduleServicesImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQScheduleServicesImpl.h; sourceTree = "<group>"; };
+		B0A2710A1BD742D700BA0C1B /* SXQScheduleServicesImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQScheduleServicesImpl.m; sourceTree = "<group>"; };
+		B0A2710C1BD745D800BA0C1B /* SXQSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQSchedule.h; sourceTree = "<group>"; };
+		B0A2710D1BD7462300BA0C1B /* SXQScheduleImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQScheduleImpl.h; sourceTree = "<group>"; };
+		B0A2710E1BD7462300BA0C1B /* SXQScheduleImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQScheduleImpl.m; sourceTree = "<group>"; };
+		B0A271101BD74DF900BA0C1B /* SXQBaseParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQBaseParam.h; sourceTree = "<group>"; };
+		B0A271111BD74DF900BA0C1B /* SXQBaseParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQBaseParam.m; sourceTree = "<group>"; };
+		B0A271131BD74E7D00BA0C1B /* SXQScheduleParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQScheduleParam.h; sourceTree = "<group>"; };
+		B0A271141BD74E7D00BA0C1B /* SXQScheduleParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQScheduleParam.m; sourceTree = "<group>"; };
+		B0A271161BD768B800BA0C1B /* SXQCountTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQCountTimeView.h; sourceTree = "<group>"; };
+		B0A271171BD768B800BA0C1B /* SXQCountTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQCountTimeView.m; sourceTree = "<group>"; };
+		B0A271191BD768C900BA0C1B /* SXQCountTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXQCountTimeView.xib; sourceTree = "<group>"; };
 		B0B1EC4E1BA27A870087A318 /* SXQVenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQVenderView.h; sourceTree = "<group>"; };
 		B0B1EC4F1BA27A870087A318 /* SXQVenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQVenderView.m; sourceTree = "<group>"; };
 		B0B1EC511BA27A920087A318 /* SXQVenderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXQVenderView.xib; sourceTree = "<group>"; };
@@ -758,6 +818,83 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B0A270D41BD7262900BA0C1B /* Schedule(计划) */ = {
+			isa = PBXGroup;
+			children = (
+				B0A271061BD7419800BA0C1B /* Services */,
+				B0A270D51BD7262900BA0C1B /* Model */,
+				B0A270D61BD7262900BA0C1B /* View */,
+				B0A270D71BD7262900BA0C1B /* ViewModel */,
+			);
+			path = "Schedule(计划)";
+			sourceTree = "<group>";
+		};
+		B0A270D51BD7262900BA0C1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B0A270D61BD7262900BA0C1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0A270DB1BD7386200BA0C1B /* SXQScheduleController.h */,
+				B0A270DC1BD7386200BA0C1B /* SXQScheduleController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0A270D71BD7262900BA0C1B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B0A270DE1BD73B5C00BA0C1B /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				B0A271031BD73C3800BA0C1B /* FSCalendarSelectDateTest.h */,
+				B0A271041BD73C3800BA0C1B /* FSCalendarTestMacros.h */,
+				B0A270DF1BD73B5C00BA0C1B /* FSCalendar+IBExtension.h */,
+				B0A270E01BD73B5C00BA0C1B /* FSCalendar+IBExtension.m */,
+				B0A270E11BD73B5C00BA0C1B /* FSCalendar.h */,
+				B0A270E21BD73B5C00BA0C1B /* FSCalendar.m */,
+				B0A270E31BD73B5C00BA0C1B /* FSCalendarAppearance.h */,
+				B0A270E41BD73B5C00BA0C1B /* FSCalendarAppearance.m */,
+				B0A270E51BD73B5C00BA0C1B /* FSCalendarCell.h */,
+				B0A270E61BD73B5C00BA0C1B /* FSCalendarCell.m */,
+				B0A270E71BD73B5C00BA0C1B /* FSCalendarConstance.h */,
+				B0A270E81BD73B5C00BA0C1B /* FSCalendarConstance.m */,
+				B0A270E91BD73B5C00BA0C1B /* FSCalendarDynamicHeader.h */,
+				B0A270EA1BD73B5C00BA0C1B /* FSCalendarHeader.h */,
+				B0A270EB1BD73B5C00BA0C1B /* FSCalendarHeader.m */,
+				B0A270EC1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.h */,
+				B0A270ED1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m */,
+				B0A270EE1BD73B5C00BA0C1B /* FSCalendarStickyHeader.h */,
+				B0A270EF1BD73B5C00BA0C1B /* FSCalendarStickyHeader.m */,
+				B0A270F01BD73B5C00BA0C1B /* Info.plist */,
+				B0A270F11BD73B5C00BA0C1B /* NSDate+FSExtension.h */,
+				B0A270F21BD73B5C00BA0C1B /* NSDate+FSExtension.m */,
+				B0A270F31BD73B5C00BA0C1B /* NSString+FSExtension.h */,
+				B0A270F41BD73B5C00BA0C1B /* NSString+FSExtension.m */,
+				B0A270F51BD73B5C00BA0C1B /* UIView+FSExtension.h */,
+				B0A270F61BD73B5C00BA0C1B /* UIView+FSExtension.m */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		B0A271061BD7419800BA0C1B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0A271081BD742A800BA0C1B /* SXQScheduleServices.h */,
+				B0A271091BD742D700BA0C1B /* SXQScheduleServicesImpl.h */,
+				B0A2710A1BD742D700BA0C1B /* SXQScheduleServicesImpl.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		B0C73C7C1B92F39E00F4B6D2 /* Expand(拓展) */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +962,13 @@
 				B0F308CB1BC6658800AD9EAF /* AccountTool.m */,
 				B084045A1BCB46E300019039 /* SXQInstructionDownloadResult.h */,
 				B084045B1BCB46E300019039 /* SXQInstructionDownloadResult.m */,
+				B0A2710C1BD745D800BA0C1B /* SXQSchedule.h */,
+				B0A2710D1BD7462300BA0C1B /* SXQScheduleImpl.h */,
+				B0A2710E1BD7462300BA0C1B /* SXQScheduleImpl.m */,
+				B0A271101BD74DF900BA0C1B /* SXQBaseParam.h */,
+				B0A271111BD74DF900BA0C1B /* SXQBaseParam.m */,
+				B0A271131BD74E7D00BA0C1B /* SXQScheduleParam.h */,
+				B0A271141BD74E7D00BA0C1B /* SXQScheduleParam.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -832,6 +976,7 @@
 		B0C73C831B92F39E00F4B6D2 /* Main(主要) */ = {
 			isa = PBXGroup;
 			children = (
+				B0A270D41BD7262900BA0C1B /* Schedule(计划) */,
 				B0F308BB1BC652E600AD9EAF /* Login(登录) */,
 				B0C73C841B92F39E00F4B6D2 /* Academic(学术圈) */,
 				B0C73C891B92F39E00F4B6D2 /* Expriment(实验) */,
@@ -1009,6 +1154,9 @@
 				B0026BE21BCF754900FB70A9 /* SXQSupplierCell.xib */,
 				B029433E1BD48A2B00736364 /* SXQReagentCountView.h */,
 				B029433F1BD48A2B00736364 /* SXQReagentCountView.m */,
+				B0A271161BD768B800BA0C1B /* SXQCountTimeView.h */,
+				B0A271171BD768B800BA0C1B /* SXQCountTimeView.m */,
+				B0A271191BD768C900BA0C1B /* SXQCountTimeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1241,6 +1389,7 @@
 		B0C73CAD1B92F39E00F4B6D2 /* Vender(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				B0A270DE1BD73B5C00BA0C1B /* FSCalendar */,
 				B0F308C41BC65C0300AD9EAF /* MBProgressHUD+MJ.h */,
 				B0F308C51BC65C0300AD9EAF /* MBProgressHUD+MJ.m */,
 				B0F308611BC6016E00AD9EAF /* MJPhotoBrowser */,
@@ -1657,6 +1806,7 @@
 				B0B1EC521BA27A920087A318 /* SXQVenderView.xib in Resources */,
 				B08E7C6E1BB26EB40023893B /* DWInstrucitonHeader.xib in Resources */,
 				B0F64C341BAFBD77001CF997 /* TimeRecorder.xib in Resources */,
+				B0A270FF1BD73B5C00BA0C1B /* Info.plist in Resources */,
 				B0A1E51C1B95897200440141 /* SXQListCell.xib in Resources */,
 				B0F73BA11BBBA97800B3D0A0 /* SXQReagentCell.xib in Resources */,
 				B08E7C691BB25C070023893B /* SXQSingleContentCell.xib in Resources */,
@@ -1671,6 +1821,7 @@
 				B0F6B1841BC7AB860090E398 /* SXQAddExpController.xib in Resources */,
 				B0F5663B1BA807D900BA1F7B /* SXQCurrentExperimentController.xib in Resources */,
 				B08E7C641BB25BCA0023893B /* SXQInstrutionCell.xib in Resources */,
+				B0A2711A1BD768C900BA0C1B /* SXQCountTimeView.xib in Resources */,
 				B08E7C731BB27A2A0023893B /* DWInstructionActionView.xib in Resources */,
 				B0F6B1901BC7BFD30090E398 /* expAssitant.sqlite in Resources */,
 				B0DDFF291BA69E7C00E4AB3C /* SXQSegmentedControll.xib in Resources */,
@@ -1769,6 +1920,7 @@
 				B06CE16B1BAAB803008BB98E /* DWExchangeController.m in Sources */,
 				B0F295DD1BB5480C00E20865 /* SXQMyExperimentManager.m in Sources */,
 				B0F308CC1BC6658800AD9EAF /* AccountTool.m in Sources */,
+				B0A2710B1BD742D700BA0C1B /* SXQScheduleServicesImpl.m in Sources */,
 				B08E7C571BB248680023893B /* SXQInstructionDetail.m in Sources */,
 				B0F295C81BB513C900E20865 /* MBProgressHUD+MJ.m in Sources */,
 				B0F738B71BA9025200EA7E9E /* DWInstructionController.m in Sources */,
@@ -1781,8 +1933,10 @@
 				B0B1EC501BA27A870087A318 /* SXQVenderView.m in Sources */,
 				B084045F1BCB478300019039 /* SXQInstructionData.m in Sources */,
 				B0C73CC71B930C6E00F4B6D2 /* SXQInstructionHeader.m in Sources */,
+				B0A271011BD73B5C00BA0C1B /* NSString+FSExtension.m in Sources */,
 				B0C73CD41B932C6000F4B6D2 /* SXQGroupCell.m in Sources */,
 				B0026BE81BCF88D000FB70A9 /* SXQSupplierResult.m in Sources */,
+				B0A270F71BD73B5C00BA0C1B /* FSCalendar+IBExtension.m in Sources */,
 				B0F73BB71BBBB3E600B3D0A0 /* FPTouchView.m in Sources */,
 				B0F8BF0C1BB0F7DE00F434FE /* LoginTool.m in Sources */,
 				B0F64C321BAFBD77001CF997 /* MZTimerLabel.m in Sources */,
@@ -1796,10 +1950,13 @@
 				B0F64BDF1BAF99EB001CF997 /* SXQExperiment.m in Sources */,
 				B06CE1681BAAB803008BB98E /* DWContainerViewController.m in Sources */,
 				B0F738C01BA9293200EA7E9E /* DWInstructionChildController.m in Sources */,
+				B0A271001BD73B5C00BA0C1B /* NSDate+FSExtension.m in Sources */,
+				B0A270F81BD73B5C00BA0C1B /* FSCalendar.m in Sources */,
 				B08E7C6C1BB26EA70023893B /* DWInstrucitonHeader.m in Sources */,
 				B0F64C251BAFB407001CF997 /* SXQExperimentResult.m in Sources */,
 				B08404651BCBA91B00019039 /* SXQCurrentExperimentData.m in Sources */,
 				B0F308A41BC6016E00AD9EAF /* SDWebImageManager+MJ.m in Sources */,
+				B0A2710F1BD7462300BA0C1B /* SXQScheduleImpl.m in Sources */,
 				B0EBC4971BA1731D000ECCA0 /* SXQVenderLogin.m in Sources */,
 				B0C73CB01B92F39E00F4B6D2 /* main.m in Sources */,
 				B0DDFEFE1BA6622C00E4AB3C /* SXQDoneExperimentController.m in Sources */,
@@ -1810,6 +1967,7 @@
 				B0F295D91BB517F600E20865 /* SXQRemarkController.m in Sources */,
 				B0E752541B94AA38009781E1 /* SXQSegmentedControl.m in Sources */,
 				B03F97BF1BA2CAEE009FD1B4 /* SXQVenderLoginTool.m in Sources */,
+				B0A270F91BD73B5C00BA0C1B /* FSCalendarAppearance.m in Sources */,
 				B0F5661E1BA7BEDE00BA1F7B /* UIBarButtonItem+SXQ.m in Sources */,
 				B08E7C5A1BB2491C0023893B /* SXQInstructionStep.m in Sources */,
 				B0F308911BC6016E00AD9EAF /* MJPhotoBrowser.m in Sources */,
@@ -1826,6 +1984,7 @@
 				B08E7C631BB25BCA0023893B /* SXQInstrutionCell.m in Sources */,
 				B0026BEE1BCF8A9C00FB70A9 /* SXQConsumableMap.m in Sources */,
 				B0F6B18A1BC7BCB70090E398 /* SXQExpEquipment.m in Sources */,
+				B0A270FD1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m in Sources */,
 				B0F738B41BA9018400EA7E9E /* SXQMenuViewController.m in Sources */,
 				B0F6B1871BC7BBA50090E398 /* SXQExpConsumable.m in Sources */,
 				B0F308C61BC65C0300AD9EAF /* MBProgressHUD+MJ.m in Sources */,
@@ -1836,6 +1995,7 @@
 				B0F73BB61BBBB3E600B3D0A0 /* FPPopoverView.m in Sources */,
 				B0DDFF0F1BA67EF000E4AB3C /* SXQExperimentStepController.m in Sources */,
 				B03F97BA1BA2A052009FD1B4 /* SXQLoginField.m in Sources */,
+				B0A271121BD74DF900BA0C1B /* SXQBaseParam.m in Sources */,
 				B0711B6C1BAFD76B00EA7E14 /* SXQExpCategory.m in Sources */,
 				B06CE1691BAAB803008BB98E /* DWConsultTViewController.m in Sources */,
 				B0DDFF281BA69E7C00E4AB3C /* SXQSegmentedControll.m in Sources */,
@@ -1852,9 +2012,12 @@
 				B0F738BB1BA90F6500EA7E9E /* SXQMenuCell.m in Sources */,
 				B0026BF41BCF8AB900FB70A9 /* SXQReagentMap.m in Sources */,
 				B0DDFF1C1BA686AF00E4AB3C /* SXQEquimentController.m in Sources */,
+				B0A270FC1BD73B5C00BA0C1B /* FSCalendarHeader.m in Sources */,
+				B0A270DD1BD7386200BA0C1B /* SXQScheduleController.m in Sources */,
 				B08E7C711BB27A0B0023893B /* DWInstructionActionView.m in Sources */,
 				B0F308BA1BC61E7000AD9EAF /* NSString+Date.m in Sources */,
 				B0F308951BC6016E00AD9EAF /* MJPhotoView.m in Sources */,
+				B0A270FB1BD73B5C00BA0C1B /* FSCalendarConstance.m in Sources */,
 				B08E7C761BB27A9A0023893B /* DWActionButton.m in Sources */,
 				B0F73B991BBB8D5C00B3D0A0 /* SXQReagentListController.m in Sources */,
 				B0F505401BABB0A900B88A3D /* SXQExperimentStep.m in Sources */,
@@ -1863,8 +2026,13 @@
 				B0F18C241BD5FF7F0025DE73 /* DWSignUpController.m in Sources */,
 				B0F295C21BB4ED9400E20865 /* SXQDBManager.m in Sources */,
 				B0DDFF091BA6664F00E4AB3C /* SXQExperimentDetailController.m in Sources */,
+				B0A271151BD74E7D00BA0C1B /* SXQScheduleParam.m in Sources */,
+				B0A270FE1BD73B5C00BA0C1B /* FSCalendarStickyHeader.m in Sources */,
+				B0A271021BD73B5C00BA0C1B /* UIView+FSExtension.m in Sources */,
 				B0F738C91BA9346F00EA7E9E /* ExperimentTool.m in Sources */,
 				B0F308921BC6016E00AD9EAF /* MJPhotoLoadingView.m in Sources */,
+				B0A270FA1BD73B5C00BA0C1B /* FSCalendarCell.m in Sources */,
+				B0A271181BD768B800BA0C1B /* SXQCountTimeView.m in Sources */,
 				B0F73BB51BBBB3E600B3D0A0 /* FPPopoverController.m in Sources */,
 				B0F3088F1BC6016E00AD9EAF /* MJPhoto.m in Sources */,
 				B0DDFF311BA6A99200E4AB3C /* SXQAnnotation.m in Sources */,

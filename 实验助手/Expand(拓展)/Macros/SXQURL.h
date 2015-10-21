@@ -52,4 +52,5 @@
 #define LoginURL @"http://hualang.wicp.net:8090/LabAssistant/login"
 #define SignUpURL @"http://hualang.wicp.net:8090/LabAssistant/register"
 //////////////////////////////登录/注册//////////////////////////////////////////////////////
+#define ScheduleURL @"http://hualang.wicp.net:8090/LabAssistant/lab/getMyExpPlan"
 #endif
