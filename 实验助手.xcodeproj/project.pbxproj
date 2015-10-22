@@ -156,6 +156,12 @@
 		B0F566361BA7FC4400BA1F7B /* SXQExperimentToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F566351BA7FC4400BA1F7B /* SXQExperimentToolBar.xib */; };
 		B0F5663A1BA807D900BA1F7B /* SXQCurrentExperimentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F566381BA807D900BA1F7B /* SXQCurrentExperimentController.m */; };
 		B0F5663B1BA807D900BA1F7B /* SXQCurrentExperimentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F566391BA807D900BA1F7B /* SXQCurrentExperimentController.xib */; };
+		B0F5B8A81BD87842005D6AE4 /* SXQLoginContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F5B8A71BD87842005D6AE4 /* SXQLoginContainer.m */; settings = {ASSET_TAGS = (); }; };
+		B0F5B8AA1BD87DC8005D6AE4 /* SXQLoginContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F5B8A91BD87DC8005D6AE4 /* SXQLoginContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		B0F5B8B01BD8864F005D6AE4 /* SXQLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F5B8AF1BD8864F005D6AE4 /* SXQLoginViewModel.m */; settings = {ASSET_TAGS = (); }; };
+		B0F5B8B71BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F5B8B61BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.m */; settings = {ASSET_TAGS = (); }; };
+		B0F5B8BB1BD88A2D005D6AE4 /* SXQLoginImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F5B8BA1BD88A2D005D6AE4 /* SXQLoginImpl.m */; settings = {ASSET_TAGS = (); }; };
+		B0F5B8BE1BD88F43005D6AE4 /* SXQLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F5B8BD1BD88F43005D6AE4 /* SXQLoginController.m */; settings = {ASSET_TAGS = (); }; };
 		B0F64BD61BAF94B7001CF997 /* SXQBaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F64BD51BAF94B7001CF997 /* SXQBaseResult.m */; };
 		B0F64BDF1BAF99EB001CF997 /* SXQExperiment.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F64BDE1BAF99EB001CF997 /* SXQExperiment.m */; };
 		B0F64C251BAFB407001CF997 /* SXQExperimentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F64C221BAFB407001CF997 /* SXQExperimentResult.m */; };
@@ -527,6 +533,19 @@
 		B0F566371BA807D900BA1F7B /* SXQCurrentExperimentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQCurrentExperimentController.h; sourceTree = "<group>"; };
 		B0F566381BA807D900BA1F7B /* SXQCurrentExperimentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQCurrentExperimentController.m; sourceTree = "<group>"; };
 		B0F566391BA807D900BA1F7B /* SXQCurrentExperimentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXQCurrentExperimentController.xib; sourceTree = "<group>"; };
+		B0F5B8A61BD87842005D6AE4 /* SXQLoginContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginContainer.h; sourceTree = "<group>"; };
+		B0F5B8A71BD87842005D6AE4 /* SXQLoginContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginContainer.m; sourceTree = "<group>"; };
+		B0F5B8A91BD87DC8005D6AE4 /* SXQLoginContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXQLoginContainer.xib; sourceTree = "<group>"; };
+		B0F5B8AE1BD8864F005D6AE4 /* SXQLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginViewModel.h; sourceTree = "<group>"; };
+		B0F5B8AF1BD8864F005D6AE4 /* SXQLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginViewModel.m; sourceTree = "<group>"; };
+		B0F5B8B21BD8877E005D6AE4 /* SXQLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLogin.h; sourceTree = "<group>"; };
+		B0F5B8B51BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginViewModelServiceImpl.h; sourceTree = "<group>"; };
+		B0F5B8B61BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginViewModelServiceImpl.m; sourceTree = "<group>"; };
+		B0F5B8B81BD888F1005D6AE4 /* SXQLoginViewModelService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginViewModelService.h; sourceTree = "<group>"; };
+		B0F5B8B91BD88A2D005D6AE4 /* SXQLoginImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginImpl.h; sourceTree = "<group>"; };
+		B0F5B8BA1BD88A2D005D6AE4 /* SXQLoginImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginImpl.m; sourceTree = "<group>"; };
+		B0F5B8BC1BD88F43005D6AE4 /* SXQLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQLoginController.h; sourceTree = "<group>"; };
+		B0F5B8BD1BD88F43005D6AE4 /* SXQLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQLoginController.m; sourceTree = "<group>"; };
 		B0F64BD41BAF94B7001CF997 /* SXQBaseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQBaseResult.h; sourceTree = "<group>"; };
 		B0F64BD51BAF94B7001CF997 /* SXQBaseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXQBaseResult.m; sourceTree = "<group>"; };
 		B0F64BDD1BAF99EB001CF997 /* SXQExperiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXQExperiment.h; sourceTree = "<group>"; };
@@ -1499,6 +1518,7 @@
 		B0F308BB1BC652E600AD9EAF /* Login(登录) */ = {
 			isa = PBXGroup;
 			children = (
+				B0F5B8B11BD886FF005D6AE4 /* Services */,
 				B0F308BC1BC652E600AD9EAF /* Controller */,
 				B0F308BD1BC652E600AD9EAF /* Model */,
 				B0F308BE1BC652E600AD9EAF /* View */,
@@ -1516,6 +1536,8 @@
 				B0F18C231BD5FF7F0025DE73 /* DWSignUpController.m */,
 				B0A270CE1BD60E5900BA0C1B /* DWSignUpLogicController.h */,
 				B0A270CF1BD60E5900BA0C1B /* DWSignUpLogicController.m */,
+				B0F5B8BC1BD88F43005D6AE4 /* SXQLoginController.h */,
+				B0F5B8BD1BD88F43005D6AE4 /* SXQLoginController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1525,6 +1547,8 @@
 			children = (
 				B0F308C71BC6657200AD9EAF /* Account.h */,
 				B0F308C81BC6657200AD9EAF /* Account.m */,
+				B0F5B8AE1BD8864F005D6AE4 /* SXQLoginViewModel.h */,
+				B0F5B8AF1BD8864F005D6AE4 /* SXQLoginViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1535,6 +1559,9 @@
 				B0F18C181BD5D2220025DE73 /* SXQSignUpView.h */,
 				B0F18C191BD5D2220025DE73 /* SXQSignUpView.m */,
 				B0F18C1B1BD5D2470025DE73 /* SXQSignUpView.xib */,
+				B0F5B8A61BD87842005D6AE4 /* SXQLoginContainer.h */,
+				B0F5B8A71BD87842005D6AE4 /* SXQLoginContainer.m */,
+				B0F5B8A91BD87DC8005D6AE4 /* SXQLoginContainer.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1558,6 +1585,19 @@
 				B0FC73061BCE2C2B00D99A26 /* NSString+Size.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		B0F5B8B11BD886FF005D6AE4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0F5B8B21BD8877E005D6AE4 /* SXQLogin.h */,
+				B0F5B8B81BD888F1005D6AE4 /* SXQLoginViewModelService.h */,
+				B0F5B8B51BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.h */,
+				B0F5B8B61BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.m */,
+				B0F5B8B91BD88A2D005D6AE4 /* SXQLoginImpl.h */,
+				B0F5B8BA1BD88A2D005D6AE4 /* SXQLoginImpl.m */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B0F64C201BAFB407001CF997 /* Other */ = {
@@ -1826,6 +1866,7 @@
 				B0F6B1901BC7BFD30090E398 /* expAssitant.sqlite in Resources */,
 				B0DDFF291BA69E7C00E4AB3C /* SXQSegmentedControll.xib in Resources */,
 				B0F939C61BA166F800D093F9 /* Resource.bundle in Resources */,
+				B0F5B8AA1BD87DC8005D6AE4 /* SXQLoginContainer.xib in Resources */,
 				B0F308C31BC6530A00AD9EAF /* DWLoginViewController.xib in Resources */,
 				B0F939CE1BA166F900D093F9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				B08E7C5F1BB2544B0023893B /* SXQInstructionStepCell.xib in Resources */,
@@ -1910,6 +1951,7 @@
 				B0F73BBA1BBBC1BE00B3D0A0 /* SXQSupplierListData.m in Sources */,
 				B0026BF71BCF8D4600FB70A9 /* SXQConsumable.m in Sources */,
 				B0DDFF0C1BA6679500E4AB3C /* DWGroup.m in Sources */,
+				B0F5B8B71BD888E5005D6AE4 /* SXQLoginViewModelServiceImpl.m in Sources */,
 				B0C73CAF1B92F39E00F4B6D2 /* AppDelegate.m in Sources */,
 				B0C73CCC1B93271200F4B6D2 /* SXQGroup.m in Sources */,
 				B0F64BD61BAF94B7001CF997 /* SXQBaseResult.m in Sources */,
@@ -1947,6 +1989,7 @@
 				B0F5663A1BA807D900BA1F7B /* SXQCurrentExperimentController.m in Sources */,
 				B0DDFF131BA67F6500E4AB3C /* SXQExperimentStepCell.m in Sources */,
 				B0F738B11BA9011600EA7E9E /* UIView+MJ.m in Sources */,
+				B0F5B8A81BD87842005D6AE4 /* SXQLoginContainer.m in Sources */,
 				B0F64BDF1BAF99EB001CF997 /* SXQExperiment.m in Sources */,
 				B06CE1681BAAB803008BB98E /* DWContainerViewController.m in Sources */,
 				B0F738C01BA9293200EA7E9E /* DWInstructionChildController.m in Sources */,
@@ -1982,6 +2025,7 @@
 				B0F64C331BAFBD77001CF997 /* TimeRecorder.m in Sources */,
 				B0F6B17F1BC7746B0090E398 /* SXQSupplier.m in Sources */,
 				B08E7C631BB25BCA0023893B /* SXQInstrutionCell.m in Sources */,
+				B0F5B8B01BD8864F005D6AE4 /* SXQLoginViewModel.m in Sources */,
 				B0026BEE1BCF8A9C00FB70A9 /* SXQConsumableMap.m in Sources */,
 				B0F6B18A1BC7BCB70090E398 /* SXQExpEquipment.m in Sources */,
 				B0A270FD1BD73B5C00BA0C1B /* FSCalendarHeaderTouchDeliver.m in Sources */,
@@ -1994,9 +2038,11 @@
 				B0F738CC1BA935C200EA7E9E /* SXQExperimentModel.m in Sources */,
 				B0F73BB61BBBB3E600B3D0A0 /* FPPopoverView.m in Sources */,
 				B0DDFF0F1BA67EF000E4AB3C /* SXQExperimentStepController.m in Sources */,
+				B0F5B8BE1BD88F43005D6AE4 /* SXQLoginController.m in Sources */,
 				B03F97BA1BA2A052009FD1B4 /* SXQLoginField.m in Sources */,
 				B0A271121BD74DF900BA0C1B /* SXQBaseParam.m in Sources */,
 				B0711B6C1BAFD76B00EA7E14 /* SXQExpCategory.m in Sources */,
+				B0F5B8BB1BD88A2D005D6AE4 /* SXQLoginImpl.m in Sources */,
 				B06CE1691BAAB803008BB98E /* DWConsultTViewController.m in Sources */,
 				B0DDFF281BA69E7C00E4AB3C /* SXQSegmentedControll.m in Sources */,
 				B0DDFF341BA6AEE000E4AB3C /* SXQAnnotationView.m in Sources */,

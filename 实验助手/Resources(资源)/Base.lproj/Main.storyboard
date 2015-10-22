@@ -668,6 +668,42 @@
             </objects>
             <point key="canvasLocation" x="-2873.5" y="1328.5"/>
         </scene>
+        <!--Login Controller-->
+        <scene sceneID="WFe-y0-map">
+            <objects>
+                <viewController storyboardIdentifier="SXQLoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rfx-Tg-Yod" customClass="SXQLoginController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BDg-jc-deu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xya-hM-A7j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l72-ab-yAk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYh-pK-HMe" customClass="SXQLoginContainer">
+                                <rect key="frame" x="0.0" y="144" width="320" height="280"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="Hf9-N3-uvp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LYh-pK-HMe" firstAttribute="centerY" secondItem="l72-ab-yAk" secondAttribute="centerY" id="2gX-Ly-SgI"/>
+                            <constraint firstAttribute="trailing" secondItem="LYh-pK-HMe" secondAttribute="trailing" id="XvO-zD-nYq"/>
+                            <constraint firstItem="LYh-pK-HMe" firstAttribute="leading" secondItem="l72-ab-yAk" secondAttribute="leading" id="cxA-8l-HjI"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="loginContainer" destination="LYh-pK-HMe" id="U7C-42-1WU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMn-Oi-b3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2668" y="2283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Feed_Normal" width="29" height="29"/>

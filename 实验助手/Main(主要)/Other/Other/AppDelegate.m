@@ -5,7 +5,7 @@
 //  Created by SXQ on 15/8/30.
 //  Copyright (c) 2015年 SXQ. All rights reserved.
 //
-#import "DWLoginViewController.h"
+#import "SXQLoginController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <Parse/Parse.h>
 #import "WeiboSDK.h"
@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    DWLoginViewController *loginvc = [DWLoginViewController new];
+    SXQLoginController *loginvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SXQLoginController"];
     self.window.rootViewController = loginvc;
     [self initializeSDK:launchOptions];
     return YES;

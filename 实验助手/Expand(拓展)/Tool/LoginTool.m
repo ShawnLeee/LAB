@@ -73,8 +73,8 @@
             //保存账号
             Account *acc = [Account objectWithKeyValues:json[@"data"]];
             [AccountTool saveAccount:acc];
-            completion(YES);
         }
+        completion(result.code == 1 ? YES : NO);
     } failure:^(NSError *error) {
         
     }];
